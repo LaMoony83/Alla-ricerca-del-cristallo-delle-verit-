@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alla ricerca del Cristallo della Verità — Contenuti Extra</title>
+<title>Alla ricerca del Cristallo delle Verità — Contenuti Extra</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baskervville&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@500&family=Pony+Club&display=swap" rel="stylesheet">
 <style>
   :root{
     --parchment:#EDE0C8;
@@ -27,7 +27,7 @@
     overflow-x:hidden;
   }
   h1,h2,h3{
-    font-family:'Cinzel', serif;
+    font-family:'Baskervville', serif;
     letter-spacing:0.02em;
     margin:0;
   }
@@ -68,6 +68,7 @@
   .hero-content{position:relative; z-index:2; max-width:640px;}
   .hero .label{margin-bottom:1rem; display:block;}
   .hero h1{
+    font-family:'Pony Club', cursive;
     font-size:clamp(2.6rem, 7vw, 4.4rem);
     color:var(--emerald);
     text-shadow:2px 2px 0 rgba(217,200,160,0.6);
@@ -261,13 +262,50 @@
 <section class="hero">
   <div class="hero-content">
     <span class="label">Contenuti speciali del libro</span>
-    <h1>Alla ricerca del Cristallo della Verità</h1>
+    <h1>Alla ricerca del Cristallo delle Verità</h1>
     <p class="tagline">Il viaggio continua oltre l'ultima pagina.</p>
     <div class="divider"></div>
     <p>Complimenti! Sei arrivato alla fine della storia ed hai scansionato il QR Code per esplorare i suoi contenuti speciali. 
-      Da qui puoi accedere alle tavole illustrate e percorrere anche tu il tuo cammino verso il Cristallo della Verità da protagonsita, in un susseguirsi di bivi che non sono mai stati raccontati.</p>
+      Da qui puoi accedere alle tavole illustrate e percorrere anche tu il tuo cammino verso il Cristallo delle Verità da protagonsita, in un susseguirsi di bivi che non sono mai stati raccontati.</p>
   </div>
   <div class="scroll-cue">Scorri per iniziare ↓</div>
+</section>
+<div class="torn"></div>
+
+<!-- ============ ADVENTURE ============ -->
+<section class="adventure" id="avventura">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="label">Da Elvoria alla Caverna dei Riflessi</span>
+      <h2>Il cammino verso la verità</h2>
+      <p style="margin-top:0.8rem;">Non ci sono risposte giuste o sbagliate: ogni scelta ti porta comunque fino alla fine. Il percorso è sempre lo stesso — le prove che incontrerai cambiano a ogni viaggio.</p>
+    </div>
+
+    <div class="trail-wrap">
+      <div class="map-panel">
+        <div class="map-image-wrap" id="mapImageWrap">
+          <img class="map-image" id="mapImage" src="mappa-viaggio.png" alt="Mappa del viaggio da Elvoria al Cristallo delle Verità"
+               onerror="this.parentElement.classList.add('map-missing'); this.style.display='none';">
+          <div class="map-points" id="mapPointsContainer">
+            <button class="map-marker" id="mp-0" style="left:47.8%; top:60.4%;"><span class="map-dot">
+            <button class="map-marker" id="mp-1" style="left:21.2%; top: 49.7%;"><span class="map-dot">
+            <button class="map-marker" id="mp-2" style="left:19.2%; top:32%;"><span class="map-dot">
+            <button class="map-marker" id="mp-3" style="left:49.9%; top:15.4%;"><span class="map-dot">
+            <button class="map-marker" id="mp-4" style="left:82.5%; top:35.4%;"><span class="map-dot">
+            <button class="map-marker" id="mp-5" style="left:85.7%; top:86.3%;"><span class="map-dot">
+            <button class="map-marker" id="mp-6" style="left:27.8%; top:88%;"><span class="map-dot">
+            <button class="map-marker" id="mp-7" style="left:22.4%; top:70%;"><span class="map-dot"></span></button>
+          </div>
+        </div>
+      </div>
+      <p class="map-hint" id="mapHint"></p>
+
+      <div class="story-card" id="storyCard">
+        <div id="storyText" class="fade-in"></div>
+        <div class="choices" id="choicesWrap"></div>
+      </div>
+    </div>
+  </div>
 </section>
 <div class="torn"></div>
 
@@ -304,47 +342,10 @@
 </section>
 <div class="torn"></div>
 
-<!-- ============ ADVENTURE ============ -->
-<section class="adventure" id="avventura">
-  <div class="section-inner">
-    <div class="section-head">
-      <span class="label">Da Elvoria alla Caverna dei Riflessi</span>
-      <h2>Il cammino verso la verità</h2>
-      <p style="margin-top:0.8rem;">Non ci sono risposte giuste o sbagliate: ogni scelta ti porta comunque fino alla fine. Il percorso è sempre lo stesso — le prove che incontrerai cambiano a ogni viaggio.</p>
-    </div>
-
-    <div class="trail-wrap">
-      <div class="map-panel">
-        <div class="map-image-wrap" id="mapImageWrap">
-          <img class="map-image" id="mapImage" src="mappa-viaggio.png" alt="Mappa del viaggio da Elvoria al Cristallo della Verità"
-               onerror="this.parentElement.classList.add('map-missing'); this.style.display='none';">
-          <div class="map-points" id="mapPointsContainer">
-            <button class="map-marker" id="mp-0" style="left:47.8%; top:60.4%;"><span class="map-dot">
-            <button class="map-marker" id="mp-1" style="left:21.2%; top: 49.7%;"><span class="map-dot">
-            <button class="map-marker" id="mp-2" style="left:19.2%; top:32%;"><span class="map-dot">
-            <button class="map-marker" id="mp-3" style="left:49.9%; top:15.4%;"><span class="map-dot">
-            <button class="map-marker" id="mp-4" style="left:82.5%; top:35.4%;"><span class="map-dot">
-            <button class="map-marker" id="mp-5" style="left:85.7%; top:86.3%;"><span class="map-dot">
-            <button class="map-marker" id="mp-6" style="left:27.8%; top:88%;"><span class="map-dot">
-            <button class="map-marker" id="mp-7" style="left:22.4%; top:70%;"><span class="map-dot"></span><span class="map-marker-label">Cristallo della Verità</span></button>
-          </div>
-        </div>
-      </div>
-      <p class="map-hint" id="mapHint"></p>
-
-      <div class="story-card" id="storyCard">
-        <div id="storyText" class="fade-in"></div>
-        <div class="choices" id="choicesWrap"></div>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="torn"></div>
-
 <!-- ============ FOOTER ============ -->
 <footer>
   <span class="label">Grazie per aver esplorato i contenuti speciali e per esserti messo in gioco</span>
-  <p>Creato per i lettori del libro <em>Alla ricerca del Cristallo della Verità</em><br>© Monica Lazzari</p>
+  <p>Creato per i lettori del libro <em>Alla ricerca del Cristallo delle Verità</em><br>© Monica Lazzari</p>
   <div class="social">
     <a href="#" aria-label="Instagram">IG</a>
     <a href="#" aria-label="Sito web">W</a>
@@ -354,7 +355,7 @@
 
 <script>
   // ---------- Lucciole animate nell'hero ----------
-  // ---------- Gioco: "Da Elvoria al Cristallo della Verità" ----------
+  // ---------- Gioco: "Da Elvoria al Cristallo delle Verità" ----------
   // Trama fedele al libro: Luna e Kael (Elvoria) → radura/Grifone → Nyra (Foresta Sussurrante)
   // → Finn (Monte Azzurro) → tentazioni di Velzakor (Pianura dei Ventagli) → il Grifone
   // ricompare (Deserto dei Sogni) → climax e redenzione di Velzakor (Caverna dei Riflessi).
@@ -372,7 +373,7 @@
   // misura quanto il giocatore ha fatto proprio il messaggio di quella tappa, e determina solo
   // quanto si illumina il Cristallo finale.
 
-  const MAPPOINTS = ["Elvoria","la Radura","la Foresta Sussurrante","il Monte Azzurro","la Pianura dei Ventagli","il Deserto dei Sogni","la Caverna dei Riflessi","il Cristallo della Verità"];
+  const MAPPOINTS = ["Elvoria","la Radura","la Foresta Sussurrante","il Monte Azzurro","la Pianura dei Ventagli","il Deserto dei Sogni","la Caverna dei Riflessi","il Cristallo delle Verità"];
   const CRYSTAL_IDX = MAPPOINTS.length - 1; // 7
 
   const CHAPTERS = [
@@ -380,79 +381,79 @@
       { type:'question',
         intro:"A Elvoria, Luna incontra Kael. Luna vede il futuro, ma in frammenti confusi che ogni volta la travolgono. Kael porta sulle spalle due ali enormi e ingombranti, ma non riesce a volare.",
         pool:[
-          { q:"Kael mostra a Luna le sue ali, imbarazzato: sono troppo grandi per essere utili a qualcosa.",
-            answers:[ {label:"Luna gli racconta a sua volta delle sue visioni, senza vergogna", points:2}, {label:"Luna lo ascolta, ma non parla delle sue", points:1}, {label:"Luna cambia discorso, imbarazzata anche lei", points:0} ] },
-          { q:"Una visione travolge Luna all'improvviso, lasciandola senza fiato.",
-            answers:[ {label:"Kael resta al suo fianco finché non si riprende", points:2}, {label:"Kael aspetta in disparte, senza intromettersi", points:1}, {label:"Kael, imbarazzato, si allontana un poco", points:0} ] }
+          { q:"Kael mostra a Luna le sue ali, imbarazzato: sono troppo grandi per essere utili a qualcosa. Non riesce nemmeno a volare. Tu sei lì con loro. Davanti a Kael e al suo imbarazzo come ti comporti?",
+            answers:[ {label:"Gli racconti di ciò che ti rende unico, senza vergogna", points:2}, {label:"Lo ascolti, ma non parli di te", points:1}, {label:"Cambi discorso, imbarazzato anche tu", points:0} ] },
+          { q:"Una visione travolge Luna all'improvviso, lasciandola senza fiato. Tu come reagisci?",
+            answers:[ {label:"Rimani al suo fianco finché non si riprende", points:2}, {label:"Aspetti in disparte, senza intrometterti", points:1}, {label:"Spaventato ed imbarazzato, ti allontani un poco", points:0} ] }
         ] }
     ] },
     { steps:[
-      { type:'narrative',
-        text:"Diventati amici, Luna e Kael vedono un bagliore nella radura fuori Elvoria. Vanno a scoprire cosa sia: è il Grifone delle Tempeste. «Non sto per mettervi alla prova», dice loro. «Il viaggio che vi aspetta non premia la perfezione. Premia quanto saprete riconoscere, in voi stessi e negli altri, ciò che vi rende unici». La mattina seguente, partono per la missione." }
+      { type:'narrative',   
+      text:"Tu e i ragazzi diventati amici. Ad un tratto vedete un bagliore nella radura fuori Elvoria e decidete di andare a scoprire insieme di cosa si tratta: è il Grifone delle Tempeste. «Sto per affidarvi una missione», dice loro. «Il viaggio che vi aspetta non premia la perfezione. Premia quanto saprete riconoscere, in voi stessi e negli altri, ciò che vi rende unici». La mattina seguente, partite per la missione." }
     ] },
     { steps:[
       { type:'narrative',
-        text:"Prima di raggiungere chi li aspetta, Luna usa il suo dono: una visione frammentata la guida tra gli alberi della Foresta Sussurrante, verso qualcuno che sembra averne bisogno." },
+        text:"Mentre vi addentrate tra gli alberi, Luna usa il suo dono: una visione frammentata la guida tra i menadri della Foresta Sussurrante, verso qualcuno che sembra avere bisogno di aiuto." },
       { type:'question',
         intro:"Mentre vi avvicinate a Nyra, la Foresta Sussurrante sembra mettere alla prova anche te.",
         pool:[
           { q:"Gli alberi bisbigliano che il tuo modo di parlare è strano. Alcuni viaggiatori ridono e ti chiedono di parlare come loro. Che cosa fai?",
             answers:[
-              { label:"Continuo a parlare come mi viene naturale, senza rispondere con rabbia.", points:2, feedback:"Ti sei ascoltato e hai difeso la tua voce con calma. Ciò che ti rende diverso non deve essere nascosto." },
-              { label:"Provo a cambiare voce per non attirare l'attenzione.", points:1, feedback:"Hai cercato protezione nel mimetizzarti. Puoi chiederti se questa scelta ti fa sentire davvero più vicino a te stesso." },
-              { label:"Dico ai viaggiatori che quelle parole mi feriscono e chiedo rispetto.", points:0, feedback:"Hai dato un nome a ciò che provi e hai posto un confine. Anche la gentilezza può essere coraggiosa." }
+              { label:"Continui a parlare come ti viene naturale, senza rispondere con rabbia.", points:2, feedback:"Ti sei ascoltato e hai difeso la tua voce con calma. Ciò che ti rende diverso non deve essere nascosto." },
+              { label:"Provi a cambiare voce per non attirare l'attenzione.", points:1, feedback:"Hai cercato protezione nel mimetizzarti. Puoi chiederti se questa scelta ti fa sentire davvero più vicino a te stesso." },
+              { label:"Dici ai viaggiatori che quelle parole ti hanno ferito e chiedi rispetto.", points:0, feedback:"Hai dato un nome a ciò che provi e hai posto un confine. Anche la gentilezza può essere coraggiosa." }
             ] },
           { q:"Un ramo incantato ti offre un mantello che può nascondere ogni dettaglio di te che non ti piace. Che cosa fai?",
             answers:[
-              { label:"Lo indosso per un momento, poi lo tolgo e osservo come mi sento.", points:2, feedback:"Hai scelto di esplorare senza giudicarti. Conoscersi richiede tempo e curiosità, non fretta." },
-              { label:"Rifiuto il mantello e proseguo mostrando il mio aspetto.", points:1, feedback:"Hai scelto di non nasconderti. Ricorda che accettarsi non significa dover essere sempre sicuri." },
-              { label:"Lo indosso e decido di non toglierlo più.", points:0, feedback:"Forse una parte di te desidera sentirsi al sicuro. La tua luce non sparisce: aspetta solo di essere guardata con dolcezza." }
+              { label:"Lo indossi per un momento, poi lo togli e osservi come ti sento.", points:2, feedback:"Hai scelto di esplorare senza giudicarti. Conoscersi richiede tempo e curiosità, non fretta." },
+              { label:"Rifiuti il mantello e prosegui mostrando il tuo aspetto.", points:1, feedback:"Hai scelto di non nasconderti. Ricorda che accettarsi non significa dover essere sempre sicuri." },
+              { label:"Lo indossi e decidi di non toglierlo più.", points:0, feedback:"Forse una parte di te desidera sentirsi al sicuro. La tua luce non sparisce: aspetta solo di essere guardata con dolcezza." }
             ] },
           { q:"Una foglia parlante ti dice che hai commesso un errore durante il viaggio e tutti potrebbero ricordarlo. Come reagisci?",
             answers:[
-              { label:"Riconosco l'errore e penso a cosa posso fare diversamente.", points:2, feedback:"Hai trasformato un inciampo in una lezione. Un errore racconta una tappa del viaggio, non il tuo intero valore." },
-              { label:"Faccio finta che non sia mai successo.", points:1, feedback:"Hai provato a proteggerti da una sensazione scomoda. A volte guardare un errore con gentilezza lo rende più piccolo." },
-              { label:"Mi ripeto che sono incapace e che non devo più provarci.", points:0, feedback:"Ti sei parlato con durezza. Fermati: anche chi cresce molto sbaglia, e merita parole più amichevoli." }
+              { label:"Riconosci l'errore e pensi a cosa puoi fare diversamente.", points:2, feedback:"Hai trasformato un inciampo in una lezione. Un errore racconta una tappa del viaggio, non il tuo intero valore." },
+              { label:"Fai finta che non sia mai successo.", points:1, feedback:"Hai provato a proteggerti da una sensazione scomoda. A volte guardare un errore con gentilezza lo rende più piccolo." },
+              { label:"Ti ripeti che sei incapace e che non devi più provarci.", points:0, feedback:"Ti sei parlato con durezza. Fermati: anche chi cresce molto sbaglia, e merita parole più amichevoli." }
             ] },
           { q:"Nel lago di muschio vedi un riflesso diverso dal tuo: più alto, più forte e più ammirato. Che cosa scegli?",
             answers:[
-              { label:"Lo guardo con curiosità, poi torno a osservare il mio vero riflesso.", points:2, feedback:"Hai riconosciuto un desiderio senza lasciare che definisse chi sei. Puoi cambiare e crescere senza smettere di essere te." },
-              { label:"Vorrei diventare subito come quel riflesso.", points:1, feedback:"Desiderare di migliorare è naturale. Ricorda però di non perdere di vista le qualità che già porti con te." },
-              { label:"Chiamo un amico e gli chiedo che cosa vede di bello in me.", points:0, feedback:"Hai cercato uno sguardo fidato quando il tuo era confuso. Accogliere un aiuto può farci vedere ciò che da soli dimentichiamo." }
+              { label:"Lo guardi con curiosità, poi torni a osservare il tuo vero riflesso.", points:2, feedback:"Hai riconosciuto un desiderio senza lasciare che definisse chi sei. Puoi cambiare e crescere senza smettere di essere te." },
+              { label:"Vorresti diventare subito come quel riflesso.", points:1, feedback:"Desiderare di migliorare è naturale. Ricorda però di non perdere di vista le qualità che già porti con te." },
+              { label:"Chiami un amico e gli chiedi che cosa vede di bello in te.", points:0, feedback:"Hai cercato uno sguardo fidato quando il tuo era confuso. Accogliere un aiuto può farci vedere ciò che da soli dimentichiamo." }
             ] },
           { q:"Gli uccelli della foresta imitano ogni tuo movimento e lo trasformano in una buffa danza. Come attraversi il sentiero?",
             answers:[
-              { label:"Rido con loro e continuo a camminare a modo mio.", points:2, feedback:"Hai lasciato spazio alla leggerezza. Non tutto ciò che è diverso deve diventare una vergogna." },
-              { label:"Mi fermo e non voglio più avanzare.", points:1, feedback:"Hai sentito il peso degli sguardi. Fai un respiro: puoi procedere con piccoli passi, senza dover dimostrare nulla." },
-              { label:"Chiedo agli uccelli di smettere e spiego che non mi piace.", points:0, feedback:"Hai ascoltato il tuo disagio e lo hai espresso. Rispettare se stessi è parte del viaggio." }
+              { label:"Ridi con loro e continui a camminare a modo tuo.", points:2, feedback:"Hai lasciato spazio alla leggerezza. Non tutto ciò che è diverso deve diventare una vergogna." },
+              { label:"Ti fermi e non vuoi più avanzare.", points:1, feedback:"Hai sentito il peso degli sguardi. Fai un respiro: puoi procedere con piccoli passi, senza dover dimostrare nulla." },
+              { label:"Chiedi agli uccelli di smettere e spieghi che non ti piace.", points:0, feedback:"Hai ascoltato il tuo disagio e lo hai espresso. Rispettare se stessi è parte del viaggio." }
             ] }
         ] },
       { type:'narrative',
-        text:"Con l'aiuto di Nyra — che ascolta la foresta come nessun altro potrebbe — il gruppo trova la via d'uscita e la invita a unirsi al viaggio: il suo dono è speciale. Appena fuori dagli alberi, però, avvertono per la prima volta una presenza: non si vede, non parla, ma il freddo che porta con sé ha un nome — Velzakor." }
+        text:"Nyra ascolta la foresta e comunica con essa come nessun altro potrebbe fare. Nyra ha un dono speciale, quindi la invitate a unirsi al vostro viaggio. Grazie al suo aiuto, tu e gli altri ragazzi trovate la via d'uscita. Appena fuori dagli alberi, però, avvertite per la prima volta una presenza: non si vede, non parla, ma il freddo che porta con sé ha un nome — Velzakor." }
     ] },
     { steps:[
       { type:'narrative',
-        text:"Sul Monte Azzurro, Kael fa scudo a Luna e Nyra lungo il sentiero scosceso. Poco più avanti incontrano Finn: spavaldo e sicuro di sé all'apparenza, ma il suo dono — guidare il vento — gli sfugge quasi sempre." },
+        text:"Sul Monte Azzurro, Kael fa scudo a tutto il gruppo lungo il sentiero scosceso. Poco più avanti incontrate Finn: spavaldo e sicuro di sé all'apparenza, ma il suo dono — guidare il vento — gli sfugge quasi sempre." },
       { type:'question',
         intro:"",
         pool:[
           { q:"Il sentiero verso la cima è ripido. Dopo pochi passi senti le gambe stanche e vedi Kael fermarsi accanto a te. Che cosa fai?",
             answers:[
-              { label:"Propongo di fare una pausa breve e poi riprendere insieme.", points:2, feedback:"Hai rispettato i tuoi limiti senza abbandonare il cammino. La costanza può avere il ritmo di un respiro." },
-              { label:"Continuo di corsa per dimostrare che ce la faccio.", points:1, feedback:"Hai mostrato determinazione, ma anche la forza ha bisogno di ascoltare il corpo. Arrivare non vale più del prendersi cura di sé." },
-              { label:"Dico che non sono capace e torno indietro subito.", points:0, feedback:"Hai sentito la paura della fatica. Puoi provare a dividere la salita in passi più piccoli: non serve affrontare tutta la montagna insieme." }
+              { label:"Proponi di fare una pausa breve e poi riprendere insieme.", points:2, feedback:"Hai rispettato i tuoi limiti senza abbandonare il cammino. La costanza può avere il ritmo di un respiro." },
+              { label:"Continui di corsa per dimostrare che ce la fai.", points:1, feedback:"Hai mostrato determinazione, ma anche la forza ha bisogno di ascoltare il corpo. Arrivare non vale più del prendersi cura di sé." },
+              { label:"Dici che non sei capace e torni indietro subito.", points:0, feedback:"Hai sentito la paura della fatica. Puoi provare a dividere la salita in passi più piccoli: non serve affrontare tutta la montagna insieme." }
             ] },
           { q:"Un ponte di pietra è spezzato da una fessura. Dall'altra parte si vede una corda lasciata dal Grifone. Come attraversi?",
             answers:[
-              { label:"Studio la distanza, provo con attenzione e uso la corda come sostegno.", points:2, feedback:"Hai unito prudenza e coraggio. Fidarsi di sé non significa agire senza paura, ma muoversi anche con la paura accanto." },
-              { label:"Aspetto che qualcuno mi porti dall'altra parte.", points:1, feedback:"Chiedere aiuto è importante. Potresti anche chiederti quale piccolo gesto puoi fare tu, insieme all'aiuto ricevuto." },
-              { label:"Salto senza guardare e senza prepararmi.", points:0, feedback:"Hai scelto l'impulso e l'audacia. Il coraggio diventa più solido quando si accompagna alla cura." }
+              { label:"Studi la distanza, provi con attenzione e usi la corda come sostegno.", points:2, feedback:"Hai unito prudenza e coraggio. Fidarsi di sé non significa agire senza paura, ma muoversi anche con la paura accanto." },
+              { label:"Aspetti che qualcuno ti porti dall'altra parte.", points:1, feedback:"Chiedere aiuto è importante. Potresti anche chiederti quale piccolo gesto puoi fare tu, insieme all'aiuto ricevuto." },
+              { label:"Salti senza guardare e senza prepararti.", points:0, feedback:"Hai scelto l'impulso e l'audacia. Il coraggio diventa più solido quando si accompagna alla cura." }
             ] },
           { q:"Una corrente d'aria solleva Kael per un attimo, poi lui ricade. Ti guarda, deluso. Che cosa gli dici?",
             answers:[
-              { label:"Gli ricordo che quel piccolo volo è già un segnale e gli propongo di riprovare quando sarà pronto.", points:2, feedback:"Hai riconosciuto il valore dei piccoli progressi. Crescere non è sempre visibile subito, ma lascia tracce." },
-              { label:"Gli dico che forse non volerà mai.", points:1, feedback:"Hai dato voce a una paura, ma le parole possono pesare. Prova a scegliere frasi che lascino spazio alle possibilità." },
-              { label:"Gli dico di non pensarci più e di fare altro.", points:0, feedback:"Hai cercato di proteggerlo dalla delusione. A volte, però, stare accanto a un sogno è più utile che allontanarlo." }
+              { label:"Gli ricordi che quel piccolo volo è già un segnale e gli proponi di riprovare quando sarà pronto.", points:2, feedback:"Hai riconosciuto il valore dei piccoli progressi. Crescere non è sempre visibile subito, ma lascia tracce." },
+              { label:"Gli dici che forse non volerà mai.", points:1, feedback:"Hai dato voce a una paura, ma le parole possono pesare. Prova a scegliere frasi che lascino spazio alle possibilità." },
+              { label:"Gli dici di non pensarci più e di fare altro.", points:0, feedback:"Hai cercato di proteggerlo dalla delusione. A volte, però, stare accanto a un sogno è più utile che allontanarlo." }
             ] },
           { q:"Davanti alla vetta trovi tre sentieri: uno breve ma scivoloso, uno lungo ma sicuro, uno sconosciuto tra le nuvole. Quale scegli?",
             answers:[
@@ -462,29 +463,29 @@
             ] },
           { q:"Una voce nella roccia ripete: «Non sei abbastanza forte per arrivare in cima.» Come rispondi?",
             answers:[
-              { label:"Le rispondo che posso provare un passo alla volta.", points:2, feedback:"Hai trasformato una voce scoraggiante in un obiettivo possibile. Un passo alla volta è già movimento." },
-              { label:"Credo alla voce e smetto di salire.", points:1, feedback:"Quella voce ha trovato un punto fragile. Puoi cercare una voce più gentile da cui ripartire." },
-              { label:"Fingo di non sentirla, ma dentro mi sento piccolo.", points:0, feedback:"Hai continuato nonostante il dubbio. Dare spazio a ciò che provi può rendere il prossimo passo meno pesante." }
+              { label:"Le dici che puoi provare un passo alla volta.", points:2, feedback:"Hai trasformato una voce scoraggiante in un obiettivo possibile. Un passo alla volta è già movimento." },
+              { label:"Credi alla voce e smetti di salire.", points:1, feedback:"Quella voce ha trovato un punto fragile. Puoi cercare una voce più gentile da cui ripartire." },
+              { label:"Fingi di non sentirla, ma dentro ti sento piccolo.", points:0, feedback:"Hai continuato nonostante il dubbio. Dare spazio a ciò che provi può rendere il prossimo passo meno pesante." }
             ] }
         ] }
     ] },
     { steps:[
       { type:'narrative',
-        text:"In quattro, arrivano alla Pianura dei Ventagli. Finn, più consapevole del proprio dono, aiuta il gruppo a orientarsi nel vento incessante. Ma Velzakor, nascosto nel fumo, tenta Kael, Luna e Finn separatamente — e nessuno dei tre sa cosa stia accadendo agli altri." },
+        text:"Tutti insieme arrivate alla Pianura dei Ventagli. Finn, che si è unito a voi sul Monte Azzurro, più consapevole del proprio dono, aiuta il gruppo a orientarsi nel vento incessante. Ma Velzakor, nascosto nel fumo, tenta Kael, Luna e Finn separatamente — e nessuno dei tre sa cosa stia accadendo agli altri." },
       { type:'question',
         intro:"",
         pool:[
           { q:"Il vento apre davanti a te tre ventagli: uno rosso soffia veloce, uno blu soffia piano, uno dorato resta immobile. Quale segui?",
             answers:[
-              { label:"Seguo il ventaglio blu e mi prendo un momento per capire cosa sento.", points:2, feedback:"Hai scelto di ascoltarti prima di agire. Le emozioni non sono ostacoli: possono essere segnali." },
-              { label:"Seguo il ventaglio rosso senza pensarci, perché voglio arrivare subito.", points:1, feedback:"Hai seguito l'urgenza del momento. Può essere utile chiederti: questa fretta mi aiuta o mi allontana da ciò che desidero?" },
-              { label:"Scelgo il ventaglio dorato e resto ferma perché non voglio sbagliare.", points:0, feedback:"Hai cercato sicurezza nell'immobilità. Puoi concederti una piccola scelta, anche quando non hai tutte le risposte." }
+              { label:"Scegli il ventaglio blu e ti prendi un momento per capire cosa senti.", points:2, feedback:"Hai scelto di ascoltarti prima di agire. Le emozioni non sono ostacoli: possono essere segnali." },
+              { label:"Scegli il ventaglio rosso senza pensarci, perché vuoi arrivare subito.", points:1, feedback:"Hai seguito l'urgenza del momento. Può essere utile chiederti: questa fretta mi aiuta o mi allontana da ciò che desidero?" },
+              { label:"Scegli il ventaglio dorato e resti fermo perché non vuoi sbagliare.", points:0, feedback:"Hai cercato sicurezza nell'immobilità. Puoi concederti una piccola scelta, anche quando non hai tutte le risposte." }
             ] },
           { q:"Una raffica porta via la mappa del gruppo. Tutti iniziano a parlare insieme e tu senti salire la confusione. Che cosa fai?",
             answers:[
-              { label:"Faccio un respiro e propongo di cercare insieme un punto di riferimento.", points:2, feedback:"Hai creato spazio nella confusione. Una pausa può aiutare le idee a ritrovare la strada." },
-              { label:"Alzo la voce per farmi sentire sopra agli altri.", points:1, feedback:"Hai risposto alla confusione con più intensità. Puoi chiederti se alzare la voce ti avvicina davvero a un punto di riferimento condiviso, o se allontana ancora di più." },
-              { label:"Mi allontano dal gruppo senza dire nulla, cercando un momento per me.", points:0, feedback:"Hai cercato spazio lontano dalla confusione. Va bene aver bisogno di una pausa, ma tornare a dire come ti senti può aiutare il gruppo a ritrovarsi anche con te." }
+              { label:"Fai un respiro e proponi di cercare insieme un punto di riferimento.", points:2, feedback:"Hai creato spazio nella confusione. Una pausa può aiutare le idee a ritrovare la strada." },
+              { label:"Alzi la voce per farti sentire sopra agli altri.", points:1, feedback:"Hai risposto alla confusione con più intensità. Puoi chiederti se alzare la voce ti avvicina davvero a un punto di riferimento condiviso, o se allontana ancora di più." },
+              { label:"Ti allontani dal gruppo senza dire nulla, cercando un momento per te.", points:0, feedback:"Hai cercato spazio lontano dalla confusione. Va bene aver bisogno di una pausa, ma tornare a dire come ti senti può aiutare il gruppo a ritrovarsi anche con te." }
             ] },
           { q:"Il vento porta due suoni insieme: una risata lontana e un lamento sommesso. Non riesci a capire da dove vengano, e senti la confusione salire. Che cosa fai?",
             answers:[
@@ -494,73 +495,73 @@
             ] },
           { q:"Il vento ti sussurra una frase che ti fa arrabbiare: «Gli altri sono più bravi di te.» Come reagisci?",
             answers:[
-              { label:"Riconosco che sono arrabbiato e cerco qualcuno con cui parlarne.", points:2, feedback:"Hai ascoltato l'emozione senza lasciarle guidare ogni gesto. Condividere ciò che senti può alleggerire il viaggio." },
-              { label:"Rispondo al vento con parole cattive.", points:1, feedback:"Hai lasciato uscire la rabbia. Ora puoi chiederti che cosa voleva proteggere dentro di te." },
-              { label:"Cerco subito di dimostrare che sono il migliore.", points:0, feedback:"Hai cercato valore nella gara. Il tuo valore non deve essere conquistato ogni volta: esiste anche mentre impari." }
+              { label:"Riconosci di esserti arrabbiato e cerchi qualcuno con cui parlarne.", points:2, feedback:"Hai ascoltato l'emozione senza lasciarle guidare ogni gesto. Condividere ciò che senti può alleggerire il viaggio." },
+              { label:"Rispondi al vento con parole cattive.", points:1, feedback:"Hai lasciato uscire la rabbia. Ora puoi chiederti che cosa voleva proteggere dentro di te." },
+              { label:"Cerchi subito di dimostrare che sei il migliore.", points:0, feedback:"Hai cercato valore nella gara. Il tuo valore non deve essere conquistato ogni volta: esiste anche mentre impari." }
             ] },
           { q:"Un ventaglio magico mostra ciò che desideri di più, ma ogni immagine cambia rapidamente. Che cosa fai?",
             answers:[
-              { label:"Osservo le immagini e scelgo quella che mi fa sentire serena, non solo eccitata.", points:2, feedback:"Hai dato importanza a come ti senti davvero. Le scelte migliori spesso uniscono desiderio e benessere." },
-              { label:"Scelgo la prima immagine brillante che vedo.", points:1, feedback:"Hai seguito l'entusiasmo del momento. Puoi sempre fermarti e verificare se quella scintilla dura anche dopo un respiro." },
-              { label:"Non scelgo nulla perché temo di pentirmene.", points:0, feedback:"Hai cercato di evitare il rischio di sbagliare. Anche le scelte imperfette possono insegnarti qualcosa di importante." }
+              { label:"Osservi le immagini e scegli quella che ti fa sentire sereno, non solo eccitato.", points:2, feedback:"Hai dato importanza a come ti senti davvero. Le scelte migliori spesso uniscono desiderio e benessere." },
+              { label:"Scegli la prima immagine brillante che vedi.", points:1, feedback:"Hai seguito l'entusiasmo del momento. Puoi sempre fermarti e verificare se quella scintilla dura anche dopo un respiro." },
+              { label:"Non scegli nulla perché temi di pentirtene.", points:0, feedback:"Hai cercato di evitare il rischio di sbagliare. Anche le scelte imperfette possono insegnarti qualcosa di importante." }
             ] }
         ] }
     ] },
     { steps:[
       { type:'narrative',
-        text:"Nel Deserto dei Sogni, i quattro vedono le proprie possibilità, se solo accettassero fino in fondo la propria diversità. Ricompare il Grifone: sa cosa è successo nella Pianura, e li invita a ritrovare fiducia gli uni negli altri." },
+        text:"Nel Deserto dei Sogni, tu e gli altri ragazzi vedete le vostre possibilità, se solo accettaste fino in fondo la vostra diversità. Ricompare il Grifone: sa che nella Pianura dei Ventagli avete avuto dei dubbi e vi invita a ritrovare fiducia gli uni negli altri." },
       { type:'question',
         intro:"",
         pool:[
           { q:"Nel deserto trovi una sfera di sabbia che mostra un sogno che non si è ancora avverato. Che cosa fai?",
             answers:[
-              { label:"La tengo con cura e penso a un piccolo gesto che potrei fare per avvicinarmi.", points:2, feedback:"Hai trasformato un desiderio in un passo possibile. I sogni crescono anche nelle azioni piccole." },
-              { label:"La nascondo perché ho paura che gli altri ridano.", points:1, feedback:"Hai protetto qualcosa di prezioso. Quando sarai pronta, condividerlo con qualcuno di fidato può farlo respirare." },
-              { label:"La getto via perché penso che non succederà mai.", points:0, feedback:"La delusione ti ha fatto chiudere una porta. Ricorda: un sogno può cambiare forma senza perdere il suo significato." }
+              { label:"La tieni con cura e pensi a un piccolo gesto che potresti fare per avvicinarti.", points:2, feedback:"Hai trasformato un desiderio in un passo possibile. I sogni crescono anche nelle azioni piccole." },
+              { label:"La nascondi perché hai paura che gli altri ridano.", points:1, feedback:"Hai protetto qualcosa di prezioso. Quando sarai pronta, condividerlo con qualcuno di fidato può farlo respirare." },
+              { label:"La getti via perché pensi che non succederà mai.", points:0, feedback:"La delusione ti ha fatto chiudere una porta. Ricorda: un sogno può cambiare forma senza perdere il suo significato." }
             ] },
           { q:"La sabbia disegna davanti a te le impronte di una persona che ti ha deluso. Come prosegui?",
             answers:[
-              { label:"Mi fermo, riconosco la tristezza e decido di continuare senza inseguire quelle impronte.", points:2, feedback:"Hai lasciato spazio al dolore senza restare bloccata lì. Proseguire non significa dimenticare." },
-              { label:"Corro dietro alle impronte per chiedere subito spiegazioni.", points:1, feedback:"Hai cercato una risposta, perché ciò che è accaduto conta. Ricorda di cercarla quando puoi farlo senza perdere la tua sicurezza." },
-              { label:"Cancello le impronte con rabbia.", points:0, feedback:"Hai espresso una ferita. Dopo la rabbia, puoi chiederti di quale cura avresti bisogno adesso." }
+              { label:"Ti fermi, riconosci la tristezza e decidi di continuare senza inseguire quelle impronte.", points:2, feedback:"Hai lasciato spazio al dolore senza restare bloccata lì. Proseguire non significa dimenticare." },
+              { label:"Corri dietro alle impronte per chiedere subito spiegazioni.", points:1, feedback:"Hai cercato una risposta, perché ciò che è accaduto conta. Ricorda di cercarla quando puoi farlo senza perdere la tua sicurezza." },
+              { label:"Cancelli le impronte con rabbia.", points:0, feedback:"Hai espresso una ferita. Dopo la rabbia, puoi chiederti di quale cura avresti bisogno adesso." }
             ] },
           { q:"Un miraggio ti mostra tutti i momenti in cui hai avuto paura. Che cosa dici a quel te stesso?",
             answers:[
-              { label:"Gli dico: «Hai fatto del tuo meglio e puoi chiedere aiuto.»", points:2, feedback:"Hai scelto parole che sostengono. La gentilezza verso di sé è una forma di coraggio." },
-              { label:"Gli dico che non doveva avere paura.", points:1, feedback:"Vorresti essere più forte. Prova a ricordare che avere paura non significa essere deboli." },
-              { label:"Distolgo lo sguardo perché non voglio rivedere quei momenti.", points:0, feedback:"Hai cercato di proteggerti da ricordi difficili. Puoi tornarci con calma, magari accanto a qualcuno che ti fa sentire al sicuro." }
+              { label:"Gli dici che ha fatto del suo meglio e può chiedere aiuto.", points:2, feedback:"Hai scelto parole che sostengono. La gentilezza verso di sé è una forma di coraggio." },
+              { label:"Gli dici che non doveva avere paura.", points:1, feedback:"Vorresti essere più forte. Prova a ricordare che avere paura non significa essere deboli." },
+              { label:"Distogli lo sguardo perché non vuoi rivedere quei momenti.", points:0, feedback:"Hai cercato di proteggerti da ricordi difficili. Puoi tornarci con calma, magari accanto a qualcuno che ti fa sentire al sicuro." }
             ] },
           { q:"Trovi una borraccia con poca acqua. Poco più avanti vedi un animale assetato. Che cosa fai?",
             answers:[
-              { label:"Bevo un poco e ne lascio un poco all'animale, poi cerco un'oasi con il gruppo.", points:2, feedback:"Hai cercato un equilibrio tra prenderti cura di te e prenderti cura dell'altro. La generosità non chiede di sparire." },
-              { label:"Do tutta l'acqua all'animale e continuo senza bere.", points:1, feedback:"Hai mostrato grande altruismo. Ricorda però che anche tu meriti cura per poter proseguire." },
-              { label:"Tengo tutta l'acqua perché ho paura di non trovarne altra.", points:0, feedback:"Hai ascoltato il bisogno di sicurezza. Puoi chiederti se esiste un modo per proteggerti senza ignorare completamente chi è accanto a te." }
+              { label:"Bevi un poco e ne lasci un poco all'animale, poi cercchi un'oasi con il gruppo.", points:2, feedback:"Hai cercato un equilibrio tra prenderti cura di te e prenderti cura dell'altro. La generosità non chiede di sparire." },
+              { label:"Dai tutta l'acqua all'animale e continui senza bere.", points:1, feedback:"Hai mostrato grande altruismo. Ricorda però che anche tu meriti cura per poter proseguire." },
+              { label:"Tieni tutta l'acqua perché hai paura di non trovarne altra.", points:0, feedback:"Hai ascoltato il bisogno di sicurezza. Puoi chiederti se esiste un modo per proteggerti senza ignorare completamente chi è accanto a te." }
             ] },
           { q:"Durante una tempesta di sabbia perdi la direzione. Il Grifone non si vede più. Che cosa fai?",
             answers:[
-              { label:"Mi fermo vicino a un riparo, faccio un respiro e cerco un segnale sicuro.", points:2, feedback:"Hai scelto calma e protezione. Anche quando non vedi la guida, puoi trovare risorse dentro e intorno a te." },
-              { label:"Corro in una direzione qualsiasi per non sentirmi ferma.", points:1, feedback:"Hai reagito alla paura con l'azione. Fermarti un istante può aiutarti a distinguere il movimento dalla direzione." },
-              { label:"Penso che sia colpa mia e mi nascondo.", points:0, feedback:"Ti sei caricata di una colpa che non ti appartiene per forza. Perdersi può accadere: ciò che conta è come chiedi aiuto e riparti." }
+              { label:"Ti fermi vicino a un riparo, fai un respiro e cerchi un segnale sicuro.", points:2, feedback:"Hai scelto calma e protezione. Anche quando non vedi la guida, puoi trovare risorse dentro e intorno a te." },
+              { label:"Corri in una direzione qualsiasi per non sentirti fermo.", points:1, feedback:"Hai reagito alla paura con l'azione. Fermarti un istante può aiutarti a distinguere il movimento dalla direzione." },
+              { label:"Pensi che sia colpa tua e ti nascondi.", points:0, feedback:"Ti sei caricata di una colpa che non ti appartiene per forza. Perdersi può accadere: ciò che conta è come chiedi aiuto e riparti." }
             ] }
         ] }
     ] },
     { steps:[
       { type:'narrative',
-        text:"Nella Caverna dei Riflessi, i quattro vedono le versioni di sé stessi che potrebbero diventare, accettando pienamente la propria diversità." },
+        text:"Nella Caverna dei Riflessi, tu ed i tuoi quattro amici vedete le versioni di voi che potreste diventare, accettando pienamente la vostra diversità." },
       { type:'narrative',
-        text:"A un passo dal cristallo, Velzakor si manifesta in tutta la sua presenza per la prima volta. Dice di aver già vinto: in ognuno di loro ha insinuato il dubbio, e per questo nessuno è \"perfetto\" abbastanza per il cristallo." },
+        text:"A un passo dal cristallo, Velzakor si manifesta in tutta la sua presenza per la prima volta. Dice di aver già vinto: in ognuno di voi ha insinuato il dubbio, e per questo nessuno è \"perfetto\" abbastanza per il cristallo." },
       { type:'narrative',
-        text:"Il Grifone delle Tempeste ricompare e racconta la verità: anche lui, secoli prima, cercò il cristallo — e Velzakor glielo impedì. La sua ossessione per la perfezione lo aveva isolato e trasformato, fino a farlo diventare qualcuno che, avendo fallito, non sopporta che altri possano riuscire." },
+        text:"Il Grifone delle Tempeste ricompare e racconta la sua storia: anche lui, secoli prima, aveva cercato il cristallo, ma Velzakor glielo aveva impedito. L'ossessione di Velzakor per la perfezione lo aveva isolato e trasformato, fino a farlo diventare qualcuno che non sopporta che altri possano riuscire laddove lui ha fallito." },
       { type:'question',
-        intro:"Spinti dal Grifone, i quattro prendono piena coscienza della propria unicità e affrontano Velzakor — non con la forza, ma restituendogli, attraverso la loro nuova sicurezza, ciò che lui stesso aveva perduto.",
+        intro:"Incoraggiati dal Grifone, prendete piena coscienza della vostra unicità e affrontate Velzakor — non con la forza, ma restituendogli, attraverso la vostra nuova sicurezza, ciò che lui stesso aveva perduto.",
         pool:[
           { q:"Uno specchio mostra una versione di te che riceve applausi perché dice sempre ciò che gli altri vogliono sentire. Che cosa fai?",
             answers:[
-              { label:"Mi chiedo quali parti di me vorrei comunque mantenere vere.", points:2, feedback:"Hai scelto di cercare autenticità anche quando il consenso è invitante. Essere apprezzati è bello; essere se stessi è profondo." },
-              { label:"Vorrei diventare come quella versione per piacere a tutti.", points:1, feedback:"Hai desiderato sentirti accolta. Puoi ricordarti che chi ti vuole bene davvero ha bisogno di conoscere anche la tua voce." },
-              { label:"Rompo lo specchio perché mi fa arrabbiare.", points:0, feedback:"Hai reagito a un'immagine che ti ha ferita. La rabbia può indicare un bisogno di essere vista in modo più giusto." }
+              { label:"Ti chiedi quali parti di te vorresti comunque mantenere vere.", points:2, feedback:"Hai scelto di cercare autenticità anche quando il consenso è invitante. Essere apprezzati è bello; essere se stessi è profondo." },
+              { label:"Vorresti diventare come quella versione per piacere a tutti.", points:1, feedback:"Hai desiderato sentirti accolta. Puoi ricordarti che chi ti vuole bene davvero ha bisogno di conoscere anche la tua voce." },
+              { label:"Rompi lo specchio perché ti fa arrabbiare.", points:0, feedback:"Hai reagito a un'immagine che ti ha ferita. La rabbia può indicare un bisogno di essere vista in modo più giusto." }
             ] },
-          { q:"Nello specchio vedi te stessa nei panni del ruolo che il gruppo si aspetta da te — quella forte, quella che ha sempre una soluzione pronta. Oggi però ti senti stanca e incerta, ben lontana da quell'immagine. Cosa fai quando il gruppo si volta verso di te aspettandosi la solita sicurezza?",
+          { q:"Nello specchio vedi te stesso nei panni del ruolo che il gruppo si aspetta da te — quello forte, quello che ha sempre una soluzione pronta. Oggi però ti senti stanco e incerto, ben lontano da quell'immagine. Cosa fai quando il gruppo si volta verso di te aspettandosi la solita sicurezza?",
             answers:[
               { label:"Dici che oggi non hai risposte pronte, e che va bene così.", points:2, feedback:"Hai scelto di mostrarti come sei davvero, anche quando questo significa deludere un'aspettativa. L'autenticità, a volte, costa proprio questo." },
               { label:"Indossi comunque la sicurezza che si aspettano da te, anche se non la senti.", points:1, feedback:"Hai indossato un ruolo che non sentivi tuo in quel momento. Va bene farlo ogni tanto — ma vale la pena chiedersi quanto spesso capita." },
@@ -568,21 +569,21 @@
             ] },
           { q:"Il Cristallo mostra una scelta che hai fatto e che ha ferito qualcuno senza volerlo. Come reagisci?",
             answers:[
-              { label:"Riconosco l'effetto della mia scelta e provo a chiedere scusa.", points:2, feedback:"Hai unito responsabilità e cura. Chiedere scusa non cancella tutto, ma può aprire un ponte." },
-              { label:"Mi giustifico subito perché non volevo farlo.", points:1, feedback:"Le intenzioni contano, ma anche l'effetto. Puoi ascoltare l'altro prima di spiegare la tua parte." },
-              { label:"Mi sento così in colpa che penso di non meritare di parlare con nessuno.", points:0, feedback:"Hai preso sul serio ciò che è accaduto. Ricorda però che la responsabilità può guidare a riparare, non solo a punirti." }
+              { label:"Riconosci l'effetto della tua scelta e provi a chiedere scusa.", points:2, feedback:"Hai unito responsabilità e cura. Chiedere scusa non cancella tutto, ma può aprire un ponte." },
+              { label:"Ti giustifichi subito perché non volevi farlo.", points:1, feedback:"Le intenzioni contano, ma anche l'effetto. Puoi ascoltare l'altro prima di spiegare la tua parte." },
+              { label:"Ti senti così in colpa che pensi di non meritare di parlare con nessuno.", points:0, feedback:"Hai preso sul serio ciò che è accaduto. Ricorda però che la responsabilità può guidare a riparare, non solo a punirti." }
             ] },
           { q:"Il gruppo deve decidere insieme quale sentiero prendere nella caverna. Proponi tu quello che viene scelto, ma poco dopo capite che porta a un vicolo cieco, facendovi perdere tempo prezioso. Cosa fai quando il gruppo si accorge dell'errore?",
             answers:[
-              { label:"Riconosci di aver proposto tu quel sentiero, e proponi insieme un modo per recuperare il tempo perso.", points:2, feedback:"Hai riconosciuto la tua parte senza nasconderti, e hai messo energie nel trovare una soluzione insieme: qui la responsabilità diventa azione, non solo parola." },
+              { label:"Riconosci di aver proposto tu quel sentiero e proponi insieme un modo per recuperare il tempo perso.", points:2, feedback:"Hai riconosciuto la tua parte senza nasconderti, e hai messo energie nel trovare una soluzione insieme: qui la responsabilità diventa azione, non solo parola." },
               { label:"Dici che la scelta era stata di tutti, non solo tua.", points:1, feedback:"Hai diluito la responsabilità in un \"tutti insieme\", anche se la proposta era partita da te. A volte condividere la scelta iniziale rende più facile guardarla con chiarezza." },
               { label:"Ti scusi così tante volte che il gruppo finisce per consolare te, invece di cercare la soluzione.", points:0, feedback:"Ti sei scusata così a lungo che il gruppo si è ritrovato a rassicurare te, invece di risolvere il problema insieme. Anche le scuse hanno bisogno di lasciare spazio agli altri." }
             ] },
           { q:"L'ultimo riflesso ti mostra una porta che si apre solo quando pronunci una verità su di te. Che cosa dici?",
             answers:[
-              { label:"Dico una qualità di cui sono fiera, anche se mi imbarazza.", points:2, feedback:"Hai riconosciuto una tua luce. Dare valore a sé non è vanità: è vedere con chiarezza." },
-              { label:"Dico solo un difetto, perché mi sembra più facile.", points:1, feedback:"Hai guardato una parte fragile di te. Ora prova ad affiancarle anche una qualità: sei sempre più di una sola difficoltà." },
-              { label:"Resto in silenzio perché non so ancora che cosa dire.", points:0, feedback:"Hai rispettato il tuo tempo. Le verità importanti a volte arrivano piano, quando ci sentiamo abbastanza al sicuro." }
+              { label:"Dici una qualità di cui sei fiero, anche se ti imbarazza.", points:2, feedback:"Hai riconosciuto una tua luce. Dare valore a sé non è vanità: è vedere con chiarezza." },
+              { label:"Dici solo un difetto, perché ti sembra più facile.", points:1, feedback:"Hai guardato una parte fragile di te. Ora prova ad affiancarle anche una qualità: sei sempre più di una sola difficoltà." },
+              { label:"Resti in silenzio perché non sai ancora che cosa dire.", points:0, feedback:"Hai rispettato il tuo tempo. Le verità importanti a volte arrivano piano, quando ci sentiamo abbastanza al sicuro." }
             ] }
         ] }
     ] }
@@ -596,13 +597,13 @@
     <line x1="8" y1="26" x2="52" y2="26" stroke="currentColor" stroke-width="1.2" opacity="0.6"/>
   </svg>`;
 
-  const CRYSTAL_APPROACH_TEXT = "Velzakor torna ad avere sembianze umane. Uno dopo l'altro, tutti si avvicinano al cristallo e vi posano la mano. Solo quando anche l'ultima mano — la tua — lo tocca, il Cristallo della Verità si accende.";
+  const CRYSTAL_APPROACH_TEXT = "Velzakor torna ad avere sembianze umane. Uno dopo l'altro, tutti vi avvicinate al cristallo e vi posate la mano. Solo quando anche l'ultima mano — la tua — lo tocca, il Cristallo delle Verità si accende.";
 
   function craftEnding(totalScore){
     const pct = totalScore / MAX_SCORE;
     if(pct >= 0.75){
       return { tier:'molto',
-        text:"Il Cristallo della Verità esplode in una luce accecante. Hai fatto tuoi i messaggi che Luna, Kael, Nyra e Finn hanno provato a mostrarti lungo il cammino: il loro viaggio, ora, si specchia nel tuo." };
+        text:"Il Cristallo delle Verità esplode in una luce accecante. Hai fatto tuoi i messaggi che Luna, Kael, Nyra e Finn hanno provato a mostrarti lungo il cammino: il loro viaggio, ora, si specchia nel tuo." };
     } else if(pct >= 0.4){
       return { tier:'poco',
         text:"Il Cristallo si accende a intermittenza, come una luce incerta. Alcuni dei messaggi ti sono entrati dentro, altri ti sono scivolati addosso. Non è un errore: significa solo che, per te, il cammino verso l'accettazione della tua diversità non è ancora finito." };
