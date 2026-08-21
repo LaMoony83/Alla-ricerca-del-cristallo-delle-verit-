@@ -125,7 +125,10 @@
   .plate:hover{ transform:translateY(-4px); background:rgba(217,200,160,0.55); }
   .plate svg{width:40%; height:40%; opacity:0.8;}
   .plate span{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.05em; padding:0 1rem;}
+  .plate.filled{border-style:solid; background:none; padding:0; overflow:hidden;}
+  .plate.filled img{width:100%; height:100%; object-fit:cover; display:block;}
   figcaption{margin-top:0.8rem; font-style:italic; color:var(--ink);}
+  .plate-desc{margin:0.4rem 0 0; font-size:0.85rem; line-height:1.45; color:var(--ink); opacity:0.85;}
 
   /* ---------- Adventure game ---------- */
   .adventure{background:var(--emerald); color:var(--parchment);}
@@ -294,7 +297,7 @@
             <button class="map-marker" id="mp-4" style="left:82.5%; top:35.4%;"><span class="map-dot">
             <button class="map-marker" id="mp-5" style="left:85.7%; top:86.3%;"><span class="map-dot">
             <button class="map-marker" id="mp-6" style="left:27.8%; top:88%;"><span class="map-dot">
-            <button class="map-marker" id="mp-7" style="left:22.4%; top:70%;"><span class="map-dot"></span><span class="map-marker-label">Cristallo delle Verità</span></button>
+            <button class="map-marker" id="mp-7" style="left:22.4%; top:70%;"><span class="map-dot"></span></button>
           </div>
         </div>
       </div>
@@ -317,32 +320,32 @@
     </div>
     <div class="gallery">
       <figure>
-        <div class="plate">
-          <svg viewBox="0 0 100 100" stroke="currentColor" stroke-width="3"><path d="M20 80 L40 40 L55 60 L70 20 L85 80" fill="none"/></svg>
-          <span>Sostituisci con la tua illustrazione</span>
+        <div class="plate filled">
+          <img src="Luna_Final.png" alt="Luna">
         </div>
         <figcaption>Luna</figcaption>
+        <p class="plate-desc">Luna vede il futuro in frammenti grazie al medaglione che le ha donato la nonna. Ad ogni visione si sente sopraffatta e non riesce a comprenderne appieno il significato. Desidera non avere più paura delle sue visioni.</p>
       </figure>
       <figure>
-        <div class="plate">
-          <svg viewBox="0 0 100 100" stroke="currentColor" stroke-width="3"><rect x="25" y="45" width="50" height="35" fill="none"/><path d="M25 45 L50 20 L75 45" fill="none"/></svg>
-          <span>Sostituisci con la tua illustrazione</span>
-        </div>
-        <figcaption>Kael</figcaption>
-      </figure>
-      <figure>
-        <div class="plate">
-          <svg viewBox="0 0 100 100" stroke="currentColor" stroke-width="3"><circle cx="50" cy="50" r="28" fill="none"/><circle cx="50" cy="50" r="8" fill="currentColor"/></svg>
-          <span>Sostituisci con la tua illustrazione</span>
+        <div class="plate filled">
+          <img src="Nyra_Final.png" alt="Nyra">
         </div>
         <figcaption>Nyra</figcaption>
+        <p class="plate-desc">Ha donato la sua voce alla natura, ma da allora non è stata più capace di parlare con gli esseri umani. Vorrebbe ritrovare la sua voce e tornare a parlare con le persone.</p>
       </figure>
       <figure>
-        <div class="plate">
-          <svg viewBox="0 0 100 100" stroke="currentColor" stroke-width="3"><path d="M20 65 Q35 30 50 65 Q65 30 80 65" fill="none"/><path d="M30 78 Q50 60 70 78" fill="none"/></svg>
-          <span>Sostituisci con la tua illustrazione</span>
+        <div class="plate filled">
+          <img src="Kael_Final.png" alt="Kael">
+        </div>
+        <figcaption>Kael</figcaption>
+        <p class="plate-desc">Ha grandi ali di cui si vergogna perché pensa siano inutili e lo rendono diverso dai suoi antenati. Il suo desiderio è di poter usare le ali per volare.</p>
+      </figure>
+      <figure>
+        <div class="plate filled">
+          <img src="Finn_Final.png" alt="Finn">
         </div>
         <figcaption>Finn</figcaption>
+        <p class="plate-desc">Gioca con il vento, ma quest'ultimo gli sfugge spesso di mano. Vorrebbe controllarlo e dominarlo, ma per via dei disastri che ha combinato in passato è stato relegato sul Monte Azzurro.</p>
       </figure>
       <figure>
         <div class="plate">
@@ -426,6 +429,7 @@
     <a href="#" aria-label="Sito web">W</a>
   </div>
   <small>Sostituisci questi placeholder con i tuoi link e il tuo copyright reale.</small>
+  <small>Le illustrazioni di questa pagina sono state create digitalmente con il supporto di strumenti di intelligenza artificiale.</small>
 </footer>
 
 <script>
