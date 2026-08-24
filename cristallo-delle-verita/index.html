@@ -1,1 +1,937 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alla ricerca del Cristallo delle Verità — Contenuti Extra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baskervville&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@500&family=Pony+Club&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment:#EDE0C8;
+    --parchment-dark:#D9C8A0;
+    --ink:#3B2A1A;
+    --emerald:#1F4D3A;
+    --gold:#A67C27;
+    --crimson:#7A1F2B;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top:4.5rem;}
+  body{
+    margin:0;
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:'EB Garamond', serif;
+    font-size:19px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Baskervville', serif;
+    letter-spacing:0.02em;
+    margin:0;
+  }
+  .label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--crimson);
+  }
+  a{color:inherit;}
+  :focus-visible{outline:3px solid var(--gold); outline-offset:3px;}
 
+  /* ---------- Menu di navigazione ---------- */
+  .site-nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(237,224,200,0.96);
+    backdrop-filter:blur(4px);
+    border-bottom:2px solid var(--gold);
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+  }
+  .site-nav ul{
+    list-style:none; margin:0; padding:0.7rem 1rem;
+    display:flex; flex-wrap:wrap; justify-content:center; gap:0.4rem 1.4rem;
+    max-width:1100px; margin-inline:auto;
+  }
+  .site-nav a{
+    font-family:'IBM Plex Mono', monospace; font-size:0.74rem; letter-spacing:0.06em;
+    text-transform:uppercase; text-decoration:none; color:var(--ink);
+    padding:0.3rem 0.2rem; border-bottom:2px solid transparent; transition:border-color 0.2s ease, color 0.2s ease;
+    white-space:nowrap;
+  }
+  .site-nav a:hover, .site-nav a:focus-visible{ color:var(--crimson); border-color:var(--gold); }
+  @media (max-width:700px){
+    .site-nav ul{ justify-content:flex-start; overflow-x:auto; gap:0.3rem 1rem; padding:0.6rem 1rem; }
+  }
+
+  /* ---------- Texture di fondo (carta) ---------- */
+  .paper-texture{
+    position:fixed; inset:0; pointer-events:none; z-index:0; opacity:0.5;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(59,42,26,0.05) 0, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(59,42,26,0.05) 0, transparent 45%),
+      radial-gradient(circle at 50% 50%, rgba(31,77,58,0.04) 0, transparent 60%);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:2rem 1.5rem 4rem;
+    background:
+      linear-gradient(180deg, var(--parchment) 0%, var(--parchment-dark) 100%);
+    overflow:hidden;
+  }
+
+  .hero-content{position:relative; z-index:2; max-width:640px;}
+  .hero .label{margin-bottom:1rem; display:block;}
+  .hero h1{
+    font-family:'Pony Club', cursive;
+    font-size:clamp(2.6rem, 7vw, 4.4rem);
+    color:var(--emerald);
+    text-shadow:2px 2px 0 rgba(217,200,160,0.6);
+  }
+  .hero p.tagline{
+    font-style:italic;
+    font-size:1.25rem;
+    margin-top:1.1rem;
+    color:var(--ink);
+  }
+  .hero .divider{
+    width:120px; height:2px; margin:1.8rem auto;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .scroll-cue{
+    margin-top:2.2rem;
+    text-align:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.12em;
+    color:var(--emerald);
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(8px);} }
+
+  /* ---------- torn edge divider ---------- */
+  .torn{
+    height:36px;
+    background:var(--parchment);
+    clip-path:polygon(0% 100%,3% 40%,7% 90%,12% 30%,18% 85%,24% 20%,30% 95%,36% 35%,42% 80%,48% 15%,54% 90%,60% 25%,66% 85%,72% 30%,78% 95%,84% 20%,90% 80%,96% 35%,100% 90%,100% 100%);
+  }
+
+  section{position:relative; z-index:1; padding:5rem 1.5rem;}
+  .section-inner{max-width:920px; margin:0 auto;}
+  .section-head{text-align:center; margin-bottom:3rem;}
+  .section-head h2{font-size:clamp(1.8rem,4vw,2.6rem); color:var(--emerald); margin-top:0.5rem;}
+
+  /* ---------- Sfondi distinti per sezione ---------- */
+  #galleria{background:var(--parchment-dark);}
+  #luoghi{background:var(--parchment);}
+  #faq{background:var(--parchment-dark);}
+
+  /* ---------- Galleria ---------- */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
+    gap:1.8rem;
+  }
+  figure{margin:0; text-align:center;}
+  .plate{
+    aspect-ratio:4/5;
+    border:2px dashed var(--gold);
+    border-radius:2px;
+    background:rgba(217,200,160,0.35);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:0.6rem;
+    color:var(--crimson);
+    transition:transform 0.35s ease, background 0.35s ease;
+  }
+  .plate:hover{ transform:translateY(-4px); background:rgba(217,200,160,0.55); }
+  .plate svg{width:40%; height:40%; opacity:0.8;}
+  .plate span{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.05em; padding:0 1rem;}
+  .plate.filled{border-style:solid; background:none; padding:0; overflow:hidden;}
+  .plate.filled img{width:100%; height:100%; object-fit:cover; display:block;}
+  figcaption{margin-top:0.8rem; font-style:italic; color:var(--ink);}
+  .plate-desc{margin:0.4rem 0 0; font-size:0.85rem; line-height:1.45; color:var(--ink); opacity:0.85;}
+
+  /* ---------- Adventure game ---------- */
+  .adventure{background:var(--emerald); color:var(--parchment);}
+  .adventure .label{color:var(--gold);}
+  .adventure .scroll-cue{color:var(--gold);}
+  .adventure .section-head h2{color:var(--parchment);}
+  .trail-wrap{max-width:720px; margin:0 auto;}
+
+  .map-panel{
+    background:var(--parchment-dark);
+    border:2px solid var(--gold);
+    border-radius:6px;
+    padding:0.6rem;
+    margin-bottom:1rem;
+    transform:rotate(-0.4deg);
+    box-shadow:0 8px 24px rgba(0,0,0,0.35);
+    position:relative;
+  }
+  .map-image-wrap{position:relative; line-height:0; border-radius:3px; overflow:hidden; aspect-ratio:4/3; background:var(--parchment-dark);}
+  .map-image{display:block; width:100%; height:100%; object-fit:cover; background:var(--parchment-dark);}
+  .map-image-wrap.map-missing::after{
+        position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    text-align:center; padding:2rem; font-family:'IBM Plex Mono', monospace; font-size:0.8rem;
+    color:var(--crimson); background:repeating-linear-gradient(45deg, rgba(166,124,39,0.12) 0 10px, transparent 10px 20px);
+    pointer-events:none; /* lascia passare i clic verso i punti sottostanti */
+  }
+  .map-points{position:absolute; inset:0;}
+  .map-marker{
+    position:absolute; transform:translate(-50%,-50%);
+    background:none; border:none; margin:0; padding:12px;
+    display:flex; flex-direction:column; align-items:center; gap:4px;
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.02em;
+    color:var(--ink); pointer-events:none;
+    -webkit-tap-highlight-color:transparent; touch-action:manipulation;
+  }
+  .map-dot{width:20px; height:20px; border-radius:50%; background:var(--parchment); border:2px solid var(--ink); transition:all 0.3s ease; flex-shrink:0;}
+  .map-marker-label{background:rgba(237,224,200,0.85); padding:2px 7px; border-radius:3px; white-space:nowrap; opacity:0.9;}
+
+  .map-marker.done .map-dot{background:var(--gold); border-color:var(--gold);}
+  .map-marker.done .map-marker-label{opacity:0.55;}
+
+  .map-marker.current .map-dot{background:var(--gold); border-color:var(--emerald); border-width:3px;}
+  .map-marker.current .map-marker-label{font-weight:700; opacity:1;}
+
+  .map-marker.locked .map-dot{background:var(--parchment); border-color:rgba(59,42,26,0.3);}
+  .map-marker.locked .map-marker-label{opacity:0.35;}
+
+  .map-marker.target{pointer-events:auto; cursor:pointer; z-index:5;}
+  .map-marker.target .map-dot{background:var(--gold); border-color:var(--crimson); border-width:3px; animation:mapGlow 1.5s ease-in-out infinite;}
+  .map-marker.target .map-marker-label{font-weight:700; color:var(--crimson); opacity:1;}
+  @keyframes mapGlow{0%,100%{filter:drop-shadow(0 0 2px var(--gold));} 50%{filter:drop-shadow(0 0 9px var(--gold));}}
+
+  @media (max-width:480px){
+    .map-marker{font-size:9.5px; padding:10px;}
+    .map-dot{width:18px; height:18px;}
+    .map-marker-label{padding:1px 5px;}
+  }
+
+  .map-hint{
+    text-align:center; font-style:italic; font-size:0.95rem; opacity:0.9;
+    margin:0 0 1.4rem;
+  }
+  .map-hint strong{font-style:normal; color:var(--gold);}
+
+  .story-card{
+    background:rgba(237,224,200,0.08);
+    border:1px solid rgba(166,124,39,0.5);
+    border-radius:4px;
+    padding:2.2rem;
+    min-height:190px;
+  }
+  .story-card p{font-size:1.15rem;}
+  .choices{display:flex; flex-wrap:wrap; gap:0.9rem; margin-top:1.6rem;}
+  .choice-btn{
+    flex:1 1 220px;
+    background:transparent;
+    border:2px solid var(--gold);
+    color:var(--parchment);
+    font-family:'EB Garamond', serif;
+    font-size:1.05rem;
+    padding:0.8rem 1.2rem;
+    border-radius:3px;
+    cursor:pointer;
+    transition:background 0.25s ease, color 0.25s ease;
+  }
+  .choice-btn:hover{background:var(--gold); color:var(--emerald);}
+  .restart-btn{
+    margin-top:1.6rem;
+    background:var(--crimson);
+    border:none;
+    color:var(--parchment);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.8rem;
+    letter-spacing:0.08em;
+    padding:0.7rem 1.3rem;
+    border-radius:3px;
+    cursor:pointer;
+  }
+  .fade-in{animation:fadeIn 0.5s ease;}
+  @keyframes fadeIn{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+
+  .crystal-icon{width:64px; height:auto; display:block; margin:0 auto 1.2rem; transition:filter 1.1s ease, opacity 1.1s ease;}
+  .crystal-icon.glow-molto{filter:drop-shadow(0 0 22px var(--gold)) brightness(1.35); opacity:1;}
+  .crystal-icon.glow-poco{filter:drop-shadow(0 0 8px var(--gold)) brightness(0.95); opacity:0.75;}
+  .crystal-icon.glow-spento{filter:none; opacity:0.35;}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{max-width:760px; margin:0 auto;}
+  .faq-item{
+    border-bottom:1px solid rgba(166,124,39,0.4);
+    padding:1.1rem 0;
+  }
+  .faq-item summary{
+    cursor:pointer; font-family:'Baskervville', serif; font-size:1.05rem; color:var(--emerald);
+    list-style:none; display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:'+'; font-size:1.3rem; color:var(--gold); flex-shrink:0;}
+  .faq-item[open] summary::after{content:'\2212';}
+  .faq-item p{margin:0.8rem 0 0;}
+
+  /* ---------- Footer ---------- */
+  footer{
+    text-align:center;
+    padding:3.5rem 1.5rem 4rem;
+    color:var(--ink);
+  }
+  footer .label{margin-bottom:0.6rem;}
+  footer small{display:block; margin-top:1.6rem; opacity:0.65; font-size:0.78rem;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .scroll-cue{animation:none !important;}
+    .plate, .fade-in{transition:none !important; animation:none !important;}
+    .map-marker.target .map-dot{animation:none !important; filter:drop-shadow(0 0 6px var(--gold)) !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" id="menu" aria-label="Sezioni della pagina">
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#avventura">Il gioco</a></li>
+    <li><a href="#galleria">I protagonisti</a></li>
+    <li><a href="#luoghi">Aetherion</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+</nav>
+
+<div class="paper-texture"></div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <span class="label">Contenuti speciali del libro</span>
+    <h1>Alla ricerca del Cristallo delle Verità</h1>
+    <p class="tagline">Il viaggio continua oltre l'ultima pagina.</p>
+    <div class="divider"></div>
+    <p>Complimenti! Sei arrivato alla fine della storia e la tua curiosità ti ha portato ad esplorare i contenuti speciali del libro. 
+      Qui potrai percorrere il tuo cammino verso il Cristallo delle Verità da protagonsita, in un susseguirsi di bivi che non sono mai stati raccontati. 
+      Inoltre avrai accesso alle tavole illustrate dei personaggi e delle ambientazioni della storia.</p>
+  </div>
+  <div class="scroll-cue">Scorri per iniziare ↓ o clicca sul menù principale</div>
+</section>
+<div class="torn"></div>
+
+<!-- ============ ADVENTURE ============ -->
+<section class="adventure" id="avventura">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="label">Da Elvoria alla Caverna dei Riflessi</span>
+      <h2>Il cammino verso la verità</h2>
+      <p style="margin-top:0.8rem;">Non ci sono risposte giuste o sbagliate: ogni scelta ti porta comunque fino alla fine. Il percorso è sempre lo stesso — le prove che incontrerai cambiano a ogni viaggio.</p>
+    </div>
+
+    <div class="trail-wrap">
+      <div class="map-panel">
+        <div class="map-image-wrap" id="mapImageWrap">
+          <img class="map-image" id="mapImage" src="mappa-viaggio.png" alt="Mappa del viaggio da Elvoria al Cristallo delle Verità"
+               onerror="this.parentElement.classList.add('map-missing'); this.style.display='none';">
+          <div class="map-points" id="mapPointsContainer">
+            <button class="map-marker" id="mp-0" style="left:47.8%; top:60.4%;"><span class="map-dot">
+            <button class="map-marker" id="mp-1" style="left:21.2%; top: 49.7%;"><span class="map-dot">
+            <button class="map-marker" id="mp-2" style="left:19.2%; top:32%;"><span class="map-dot">
+            <button class="map-marker" id="mp-3" style="left:49.9%; top:15.4%;"><span class="map-dot">
+            <button class="map-marker" id="mp-4" style="left:82.5%; top:35.4%;"><span class="map-dot">
+            <button class="map-marker" id="mp-5" style="left:85.7%; top:86.3%;"><span class="map-dot">
+            <button class="map-marker" id="mp-6" style="left:27.8%; top:88%;"><span class="map-dot">
+            <button class="map-marker" id="mp-7" style="left:22.4%; top:70%;"><span class="map-dot"></span></button>
+          </div>
+        </div>
+      </div>
+      <p class="map-hint" id="mapHint"></p>
+
+      <div class="story-card" id="storyCard">
+        <div id="storyText" class="fade-in"></div>
+        <div class="choices" id="choicesWrap"></div>
+      </div>
+    </div>
+    <div class="scroll-cue">Scorri per continuare ↓ o clicca sul menù principale</div>
+  </div>
+</section>
+<div class="torn"></div>
+
+<!-- ============ GALLERIA ============ -->
+<section id="galleria">
+  <div class="section-inner">
+    <div class="section-head">
+            <h2>I protagonisti</h2>
+    </div>
+    <div class="gallery">
+      <figure>
+        <div class="plate filled">
+          <img src="Luna.png" alt="Luna">
+        </div>
+        <figcaption>Luna</figcaption>
+        <p class="plate-desc">Vede il futuro in frammenti grazie al medaglione che le ha donato la nonna. Ad ogni visione si sente sopraffatta e non riesce a comprenderne appieno il significato. Desidera non avere più paura delle sue visioni.</p>
+      </figure>
+      <figure>
+        <div class="plate filled">
+          <img src="Nyra.png" alt="Nyra">
+        </div>
+        <figcaption>Nyra</figcaption>
+        <p class="plate-desc">Ha donato la sua voce alla natura, ma da allora non è stata più capace di parlare con gli esseri umani. Vorrebbe ritrovare la sua voce e tornare a parlare con le persone.</p>
+      </figure>
+      <figure>
+        <div class="plate filled">
+          <img src="Kael_2.png" alt="Kael">
+        </div>
+        <figcaption>Kael</figcaption>
+        <p class="plate-desc">Ha grandi ali di cui si vergogna perché pesanti ed ingombranti. Si sente diverso dai suoi antenati poiché incapace di compiere gesta eroiche. Il suo desiderio più grande è di usare le sue ali per volare.</p>
+      </figure>
+      <figure>
+        <div class="plate filled">
+          <img src="Finn_2.png" alt="Finn">
+        </div>
+        <figcaption>Finn</figcaption>
+        <p class="plate-desc">Gioca con il vento, ma quest'ultimo gli sfugge spesso di mano. Vorrebbe controllarlo e dominarlo, ma per via dei disastri che ha combinato in passato è stato relegato sul Monte Azzurro.</p>
+      </figure>
+      <figure>
+        <div class="plate filled">
+          <img src="Grifone.png" alt="Il Grifone delle Tempeste">
+        </div>
+        <figcaption>Il Grifone delle Tempeste</figcaption>
+        <p class="plate-desc">Creatura mitologica con corpo di leone e testa e ali di aquila, compare a Luna e Kael ed affida loro una missione: trovare il Cristallo delle Verità e riportarlo ad Elvoria per ristabilire l'armonia.</p+>
+      </figure>
+      <figure>
+        <div class="plate filled">
+          <img src="Velzakor.png" alt="Velzakor">
+        </div>
+        <figcaption>Velzakor</figcaption>
+        <p class="plate-desc">La ricerca ossessiva della perfezione lo ha trasformato da giovane ragazzo a creatura mostruosa. Il suo obiettivo è impedire a chiunque cerchi il Cristallo delle Verità di raggiungerlo.</p>
+      </figure>
+    </div>
+    <div class="scroll-cue">Scorri per continuare ↓ o clicca sul menù principale</div>
+  </div>
+</section>
+<div class="torn"></div>
+
+<!-- ============ LUOGHI ============ -->
+<section id="luoghi">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>Aetherion</h2>
+    </div>
+    <div class="gallery">
+      <figure>
+        <div class="plate filled">
+          <img src="Elvoria.png" alt="Elvoria">
+        </div>
+        <figcaption>Elvoria</figcaption>
+      </figure>
+      <figure>
+        <div class="plate filled">
+          <img src="Foresta.png" alt="La Foresta Sussurrante">
+        </div>
+        <figcaption>La Foresta Sussurrante</figcaption>
+      </figure>
+      <figure>
+        <div class="plate filled">
+          <img src="Monte.png" alt="Il Monte Azzurro">
+        </div>
+        <figcaption>Il Monte Azzurro</figcaption>
+      </figure>
+      <figure>
+        <div class="plate filled">
+          <img src="Pianura.png" alt="La Pianura dei Ventagli">
+        </div>
+        <figcaption>La Pianura dei Ventagli</figcaption>
+      </figure>
+      <figure>
+        <div class="plate filled">
+          <img src="Deserto.png" alt="Il Deserto dei Sogni">
+        </div>
+        <figcaption>Il Deserto dei Sogni</figcaption>
+      </figure>
+      <figure>
+        <div class="plate filled">
+          <img src="Caverna.jpg" alt="La Caverna dei Riflessi">
+        </div>
+        <figcaption>La Caverna dei Riflessi</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+<div class="torn"></div>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>FAQ - Domande frequenti</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Devo aver letto il libro per giocare?</summary>
+        <p>Il gioco è pensato per chi ha letto il libro, poiché i riferimenti alla trama ti aiuteranno a comprendere meglio le domande e ad ottenere risultati più soddisfacenti.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Posso rigiocare il percorso più volte?</summary>
+        <p>Sì. Ogni volta le prove che incontri lungo il cammino cambiano, quindi ogni partita è un'esperienza un po' diversa.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Il finale che ottengo resta salvato da qualche parte?</summary>
+        <p>No, nulla viene salvato. Ogni partita è indipendente: puoi ricominciare da capo quando vuoi.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Vengono raccolti i miei dati personali?</summary>
+        <p>No. Il gioco funziona interamente nel tuo browser: non serve creare un account né fornire alcuna informazione personale.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Posso usarlo su qualsiasi dispositivo?</summary>
+        <p>Sì, basta un browser e una connessione internet: funziona da smartphone, tablet o computer.</p>
+      </details>
+    </div>
+  </div>
+</section>
+<div class="torn"></div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <span class="label">Grazie per esserti messo in gioco e per aver esplorato i contenuti speciali del libro.</span>
+  <p>Creato per i lettori di <em>Alla ricerca del Cristallo delle Verità</em><br>© Monica Lazzari</p>
+  <small>Le illustrazioni di questa pagina sono state create digitalmente con il supporto di strumenti di intelligenza artificiale.</small>
+</footer>
+
+<script>
+  // ---------- Lucciole animate nell'hero ----------
+  // ---------- Gioco: "Da Elvoria al Cristallo delle Verità" ----------
+  // Trama fedele al libro: Luna e Kael (Elvoria) → radura/Grifone → Nyra (Foresta Sussurrante)
+  // → Finn (Monte Azzurro) → tentazioni di Velzakor (Pianura dei Ventagli) → il Grifone
+  // ricompare (Deserto dei Sogni) → climax e redenzione di Velzakor (Caverna dei Riflessi).
+  //
+  // La storia è divisa in CAPITOLI, uno per luogo (radura inclusa). Tra un capitolo e l'altro
+  // si apre la MAPPA illustrata: è cliccabile solo il punto successivo, tutti gli altri sono
+  // bloccati — il percorso resta sempre lo stesso e nello stesso ordine, come un "cancello"
+  // (prova) da superare per proseguire. L'ultimo punto della mappa è il Cristallo stesso: chi
+  // lo tocca vede il finale.
+  //
+  // Dentro ogni capitolo, alcuni passaggi sono narrativi (si preme "Continua"); altri propongono
+  // una domanda pescata a caso da un piccolo pool, così le domande "si incrociano" a ogni
+  // partita pur restando fedeli al messaggio di quel luogo. Non ci sono risposte giuste o
+  // sbagliate: tutte fanno proseguire la storia. Il punteggio (0/1/2 per risposta) non giudica:
+  // misura quanto il giocatore ha fatto proprio il messaggio di quella tappa, e determina solo
+  // quanto si illumina il Cristallo finale.
+
+  const MAPPOINTS = ["Elvoria","la Radura","la Foresta Sussurrante","il Monte Azzurro","la Pianura dei Ventagli","il Deserto dei Sogni","la Caverna dei Riflessi","il Cristallo delle Verità"];
+  const CRYSTAL_IDX = MAPPOINTS.length - 1; // 7
+
+  const CHAPTERS = [
+    { steps:[
+      { type:'question',
+        intro:"A Elvoria, Luna incontra Kael. Luna vede il futuro, ma in frammenti confusi che ogni volta la travolgono. Kael porta sulle spalle due ali enormi e ingombranti, ma non riesce a volare.",
+        pool:[
+          { q:"Kael mostra a Luna le sue ali, imbarazzato: sono troppo grandi per essere utili a qualcosa. Non riesce nemmeno a volare. Tu davanti a Kael come reagisci?",
+            answers:[ {label:"Gli racconti di ciò che ti rende unico, senza vergogna", points:2}, {label:"Lo ascolti, ma non parli di te", points:1}, {label:"Cambi discorso, imbarazzato anche tu", points:0} ] },
+          { q:"Una visione travolge Luna all'improvviso, lasciandola senza fiato. Tu che fai?",
+            answers:[ {label:"Rimani al suo fianco finché non si riprende", points:2}, {label:"Aspetti in disparte, senza intrometterti", points:1}, {label:"Spaventato ed imbarazzato, ti allontani un poco", points:0} ] }
+        ] }
+    ] },
+    { steps:[
+      { type:'narrative',
+        text:"Tu e i ragazzi diventati amici. Ad un tratto vedete un bagliore nella radura fuori Elvoria. Andate a scoprire cosa stia succedendo: è il Grifone delle Tempeste. «Sto per affidarvi una missione», dice loro. «Il viaggio che vi aspetta non premia la perfezione. Premia quanto saprete riconoscere, in voi stessi e negli altri, ciò che vi rende unici». All'unanimità decidete di accettare e la mattina seguente partite per la missione." }
+    ] },
+    { steps:[
+      { type:'narrative',
+        text:"Mentre vi addentrate tra gli alberi, Luna usa il suo dono: una visione frammentata la guida attraverso la Foresta Sussurrante verso qualcuno che sembra avere bisogno di aiuto. E' Nyra." },
+      { type:'question',
+        intro:"Mentre vi avvicinate a Nyra, la Foresta Sussurrante sembra mettere alla prova anche te.",
+        pool:[
+          { q:"Gli alberi bisbigliano che il tuo modo di parlare è strano. Alcuni viaggiatori ridono e ti chiedono di parlare come loro. Che cosa fai?",
+            answers:[
+              { label:"Continui a parlare come ti viene naturale, senza rispondere con rabbia.", points:2, feedback:"Ti sei ascoltato e hai difeso la tua voce con calma. Ciò che ti rende diverso non deve essere nascosto." },
+              { label:"Provi a cambiare voce per non attirare l'attenzione.", points:1, feedback:"Hai cercato protezione nel mimetizzarti. Puoi chiederti se questa scelta ti fa sentire davvero più vicino a te stesso." },
+              { label:"Dici ai viaggiatori che quelle parole ti hanno ferito e chiedi rispetto.", points:0, feedback:"Hai dato un nome a ciò che provi e hai posto un confine. Anche la gentilezza può essere coraggiosa." }
+            ] },
+          { q:"Un ramo incantato ti offre un mantello che può nascondere ogni dettaglio di te che non ti piace. Che cosa fai?",
+            answers:[
+              { label:"Lo indossi per un momento, poi lo togli e osservi come ti senti.", points:2, feedback:"Hai scelto di esplorare senza giudicarti. Conoscersi richiede tempo e curiosità, non fretta." },
+              { label:"Rifiuti il mantello e prosegui mostrando il tuo aspetto.", points:1, feedback:"Hai scelto di non nasconderti. Ricorda che accettarsi non significa dover essere sempre sicuri." },
+              { label:"Lo indossi e decidi di non toglierlo più.", points:0, feedback:"Forse una parte di te desidera sentirsi al sicuro. La tua luce non sparisce: aspetta solo di essere guardata con dolcezza." }
+            ] },
+          { q:"Una foglia parlante ti dice che hai commesso un errore durante il viaggio e tutti potrebbero ricordarlo. Come reagisci?",
+            answers:[
+              { label:"Riconosci l'errore e pensi a cosa puoi fare diversamente.", points:2, feedback:"Hai trasformato un inciampo in una lezione. Un errore racconta una tappa del viaggio, non il tuo intero valore." },
+              { label:"Fai finta che non sia mai successo.", points:1, feedback:"Hai provato a proteggerti da una sensazione scomoda. A volte guardare un errore con gentilezza lo rende più piccolo." },
+              { label:"Ti ripeti che sei incapace e che non devi più provarci.", points:0, feedback:"Ti sei parlato con durezza. Fermati: anche chi cresce molto sbaglia, e merita parole più amichevoli." }
+            ] },
+          { q:"Nel lago di muschio vedi un riflesso diverso dal tuo: più alto, più forte e più ammirato. Che cosa scegli?",
+            answers:[
+              { label:"Lo guardi con curiosità, poi torni a osservare il tuo vero riflesso.", points:2, feedback:"Hai riconosciuto un desiderio senza lasciare che definisse chi sei. Puoi cambiare e crescere senza smettere di essere te." },
+              { label:"Vorresti diventare subito come quel riflesso.", points:1, feedback:"Desiderare di migliorare è naturale. Ricorda però di non perdere di vista le qualità che già porti con te." },
+              { label:"Chiami un amico e gli chiedi che cosa vede di bello in te.", points:0, feedback:"Hai cercato uno sguardo fidato quando il tuo era confuso. Accogliere un aiuto può farci vedere ciò che da soli dimentichiamo." }
+            ] },
+          { q:"Gli uccelli della foresta imitano ogni tuo movimento e lo trasformano in una buffa danza. Come attraversi il sentiero?",
+            answers:[
+              { label:"Ridi con loro e continui a camminare a modo tuo.", points:2, feedback:"Hai lasciato spazio alla leggerezza. Non tutto ciò che è diverso deve diventare una vergogna." },
+              { label:"Ti fermi e non vuoi più avanzare.", points:1, feedback:"Hai sentito il peso degli sguardi. Fai un respiro: puoi procedere con piccoli passi, senza dover dimostrare nulla." },
+              { label:"Chiedi agli uccelli di smettere e spieghi che non ti piace.", points:0, feedback:"Hai ascoltato il tuo disagio e lo hai espresso. Rispettare se stessi è parte del viaggio." }
+            ] }
+        ] },
+      { type:'narrative',
+        text:"Nyra ascolta la foresta come nessun altro sa fare. Tu e gli altri ragazzi le dite che ha un dono speciale e la invitate ad unirsi a voi. Con l'aiuto di Nyra trovate la via d'uscita dalla Foresta Sussurrante. Appena fuori dagli alberi, però, avvertite per la prima volta una presenza: non si vede, non parla, ma il freddo che porta con sé ha un nome — Velzakor. Non vi fate scoraggiare e proseguito verso il Monte Azzurro." }
+    ] },
+    { steps:[
+      { type:'narrative',
+        text:"Sul Monte Azzurro, Kael fa scudo a tutto il gruppo lungo il sentiero scosceso. Poco più avanti incontrate Finn: spavaldo e sicuro di sé all'apparenza, ma il suo dono — guidare il vento — gli sfugge quasi sempre." },
+      { type:'question',
+        intro:"",
+        pool:[
+          { q:"Il sentiero verso la cima è ripido. Dopo pochi passi senti le gambe stanche e vedi Kael fermarsi accanto a te. Che cosa fai?",
+            answers:[
+              { label:"Proponi di fare una pausa breve e poi riprendere insieme.", points:2, feedback:"Hai rispettato i tuoi limiti senza abbandonare il cammino. La costanza può avere il ritmo di un respiro." },
+              { label:"Continui di corsa per dimostrare che ce la fai.", points:1, feedback:"Hai mostrato determinazione, ma anche la forza ha bisogno di ascoltare il corpo. Arrivare non vale più del prendersi cura di sé." },
+              { label:"Dici che non sei capace e torni indietro subito.", points:0, feedback:"Hai sentito la paura della fatica. Puoi provare a dividere la salita in passi più piccoli: non serve affrontare tutta la montagna insieme." }
+            ] },
+          { q:"Un ponte di pietra è spezzato da una fessura. Dall'altra parte si vede una corda lasciata dal Grifone. Come attraversi?",
+            answers:[
+              { label:"Studi la distanza, provi con attenzione e usi la corda come sostegno.", points:2, feedback:"Hai unito prudenza e coraggio. Fidarsi di sé non significa agire senza paura, ma muoversi anche con la paura accanto." },
+              { label:"Aspetti che qualcuno ti porti dall'altra parte.", points:1, feedback:"Chiedere aiuto è importante. Potresti anche chiederti quale piccolo gesto puoi fare tu, insieme all'aiuto ricevuto." },
+              { label:"Salti senza guardare e senza prepararti.", points:0, feedback:"Hai scelto l'impulso e l'audacia. Il coraggio diventa più solido quando si accompagna alla cura." }
+            ] },
+          { q:"Una corrente d'aria solleva Kael per un attimo, poi lui ricade. Ti guarda, deluso. Che cosa gli dici?",
+            answers:[
+              { label:"Gli ricordi che quel piccolo volo è già un segnale e gli proponi di riprovare quando sarà pronto.", points:2, feedback:"Hai riconosciuto il valore dei piccoli progressi. Crescere non è sempre visibile subito, ma lascia tracce." },
+              { label:"Gli dici che forse non volerà mai.", points:1, feedback:"Hai dato voce a una paura, ma le parole possono pesare. Prova a scegliere frasi che lascino spazio alle possibilità." },
+              { label:"Gli dici di non pensarci più e di fare altro.", points:0, feedback:"Hai cercato di proteggerlo dalla delusione. A volte, però, stare accanto a un sogno è più utile che allontanarlo." }
+            ] },
+          { q:"Davanti alla vetta trovi tre sentieri: uno breve ma scivoloso, uno lungo ma sicuro, uno sconosciuto tra le nuvole. Quale scegli?",
+            answers:[
+              { label:"Il sentiero lungo e sicuro, anche se richiede pazienza.", points:2, feedback:"Hai scelto un passo sostenibile. La strada più lenta non è una strada minore." },
+              { label:"Il sentiero breve e scivoloso, facendo molta attenzione.", points:1, feedback:"Hai scelto una sfida intensa con attenzione. Ricorda di fermarti quando il rischio supera ciò che puoi gestire." },
+              { label:"Il sentiero tra le nuvole, perché vuoi vedere dove porta.", points:0, feedback:"La curiosità ti guida verso l'ignoto. Porta con te anche una domanda: che cosa mi aiuta a sentirmi abbastanza al sicuro?" }
+            ] },
+          { q:"Una voce nella roccia ripete: «Non sei abbastanza forte per arrivare in cima.» Come rispondi?",
+            answers:[
+              { label:"Rispondi che puoi provare un passo alla volta.", points:2, feedback:"Hai trasformato una voce scoraggiante in un obiettivo possibile. Un passo alla volta è già movimento." },
+              { label:"Credi alla voce e smetti di salire.", points:1, feedback:"Quella voce ha trovato un punto fragile. Puoi cercare una voce più gentile da cui ripartire." },
+              { label:"Fingi di non sentirla, ma dentro ti senti piccolo.", points:0, feedback:"Hai continuato nonostante il dubbio. Dare spazio a ciò che provi può rendere il prossimo passo meno pesante." }
+            ] }
+        ] }
+    ] },
+    { steps:[
+      { type:'narrative',
+        text:"Tutti insieme arrivate alla Pianura dei Ventagli. Finn, più consapevole del proprio dono, aiuta il gruppo a orientarsi nel vento incessante. Ma Velzakor, nascosto nel fumo, tenta Kael, Luna e Finn separatamente — e nessuno dei tre sa cosa stia accadendo agli altri." },
+      { type:'question',
+        intro:"",
+        pool:[
+          { q:"Il vento apre davanti a te tre ventagli: uno rosso soffia veloce, uno blu soffia piano, uno dorato resta immobile. Quale segui?",
+            answers:[
+              { label:"Segui il ventaglio blu e ti prendi un momento per capire cosa senti.", points:2, feedback:"Hai scelto di ascoltarti prima di agire. Le emozioni non sono ostacoli: possono essere segnali." },
+              { label:"Segui il ventaglio rosso senza pensarci, perché vuoi arrivare subito.", points:1, feedback:"Hai seguito l'urgenza del momento. Può essere utile chiederti: questa fretta mi aiuta o mi allontana da ciò che desidero?" },
+              { label:"Scegli il ventaglio dorato e resti fermo perché non vuoi sbagliare.", points:0, feedback:"Hai cercato sicurezza nell'immobilità. Puoi concederti una piccola scelta, anche quando non hai tutte le risposte." }
+            ] },
+          { q:"Una raffica porta via la mappa del gruppo. Tutti iniziano a parlare insieme e tu senti salire la confusione. Che cosa fai?",
+            answers:[
+              { label:"Fai un respiro e proponi di cercare insieme un punto di riferimento.", points:2, feedback:"Hai creato spazio nella confusione. Una pausa può aiutare le idee a ritrovare la strada." },
+              { label:"Alzi la voce per farti sentire sopra agli altri.", points:1, feedback:"Hai risposto alla confusione con più intensità. Puoi chiederti se alzare la voce ti avvicina davvero a un punto di riferimento condiviso, o se allontana ancora di più." },
+              { label:"Ti allontani dal gruppo senza dire nulla, cercando un momento per te.", points:0, feedback:"Hai cercato spazio lontano dalla confusione. Va bene aver bisogno di una pausa, ma tornare a dire come ti senti può aiutare il gruppo a ritrovarsi anche con te." }
+            ] },
+          { q:"Il vento porta due suoni insieme: una risata lontana e un lamento sommesso. Non riesci a capire da dove vengano, e senti la confusione salire. Che cosa fai?",
+            answers:[
+              { label:"Ti fermi un istante, respiri e aspetti che il rumore si calmi prima di scegliere.", points:2, feedback:"Ti sei presa il tempo di ascoltare oltre la confusione, invece di lasciarti guidare dalla prima impressione. Anche fermarsi è una scelta." },
+              { label:"Segui subito il suono più forte, senza chiederti cosa provi davvero.", points:1, feedback:"Hai scelto in fretta, spinta dall'urgenza di decidere. A volte il suono più forte non è quello più importante da seguire." },
+              { label:"Decidi di non seguire nessuno dei due, per paura di sbagliare direzione.", points:0, feedback:"Il timore di sbagliare ti ha fermata del tutto. Va bene non sapere subito — ma restare ferme troppo a lungo è anch'essa una scelta, fatta dalla paura più che da te." }
+            ] },
+          { q:"Il vento ti sussurra una frase che ti fa arrabbiare: «Gli altri sono più bravi di te.» Come reagisci?",
+            answers:[
+              { label:"Riconosci di esserti arrabbiato e cerchi qualcuno con cui parlarne.", points:2, feedback:"Hai ascoltato l'emozione senza lasciarle guidare ogni gesto. Condividere ciò che senti può alleggerire il viaggio." },
+              { label:"Rispondi al vento con parole cattive.", points:1, feedback:"Hai lasciato uscire la rabbia. Ora puoi chiederti che cosa voleva proteggere dentro di te." },
+              { label:"Cerchi subito di dimostrare che sei il migliore.", points:0, feedback:"Hai cercato valore nella gara. Il tuo valore non deve essere conquistato ogni volta: esiste anche mentre impari." }
+            ] },
+          { q:"Un ventaglio magico mostra ciò che desideri di più, ma ogni immagine cambia rapidamente. Che cosa fai?",
+            answers:[
+              { label:"Osservi le immagini e scegli quella che ti fa sentire sereno, non solo eccitato.", points:2, feedback:"Hai dato importanza a come ti senti davvero. Le scelte migliori spesso uniscono desiderio e benessere." },
+              { label:"Scegli la prima immagine brillante che vedi.", points:1, feedback:"Hai seguito l'entusiasmo del momento. Puoi sempre fermarti e verificare se quella scintilla dura anche dopo un respiro." },
+              { label:"Non scegli nulla perché temi di pentirtene.", points:0, feedback:"Hai cercato di evitare il rischio di sbagliare. Anche le scelte imperfette possono insegnarti qualcosa di importante." }
+            ] }
+        ] }
+    ] },
+    { steps:[
+      { type:'narrative',
+        text:"Nel Deserto dei Sogni, tu e gli altri ragazzi vedete le vostre possibilità, se solo accettaste fino in fondo la vostra diversità. Ricompare il Grifone: sa cosa è successo nella Pianura, e vi invita a ritrovare fiducia gli uni negli altri." },
+      { type:'question',
+        intro:"",
+        pool:[
+          { q:"Nel deserto trovi una sfera di sabbia che mostra un sogno che non si è ancora avverato. Che cosa fai?",
+            answers:[
+              { label:"La tieni con cura e pensi a un piccolo gesto che potresti fare per avvicinarti.", points:2, feedback:"Hai trasformato un desiderio in un passo possibile. I sogni crescono anche nelle azioni piccole." },
+              { label:"La nascondi perché hai paura che gli altri ridano.", points:1, feedback:"Hai protetto qualcosa di prezioso. Quando sarai pronta, condividerlo con qualcuno di fidato può farlo respirare." },
+              { label:"La getti via perché pensi che non succederà mai.", points:0, feedback:"La delusione ti ha fatto chiudere una porta. Ricorda: un sogno può cambiare forma senza perdere il suo significato." }
+            ] },
+          { q:"La sabbia disegna davanti a te le impronte di una persona che ti ha deluso. Come prosegui?",
+            answers:[
+              { label:"Ti fermi, riconosci la tristezza e decidi di continuare senza inseguire quelle impronte.", points:2, feedback:"Hai lasciato spazio al dolore senza restare bloccata lì. Proseguire non significa dimenticare." },
+              { label:"Corri dietro alle impronte per chiedere subito spiegazioni.", points:1, feedback:"Hai cercato una risposta, perché ciò che è accaduto conta. Ricorda di cercarla quando puoi farlo senza perdere la tua sicurezza." },
+              { label:"Cancelli le impronte con rabbia.", points:0, feedback:"Hai espresso una ferita. Dopo la rabbia, puoi chiederti di quale cura avresti bisogno adesso." }
+            ] },
+          { q:"Un miraggio ti mostra tutti i momenti in cui hai avuto paura. Che cosa dici a quel te stesso?",
+            answers:[
+              { label:"Gli dici che ha fatto del suo meglio e può chiedere aiuto.»", points:2, feedback:"Hai scelto parole che sostengono. La gentilezza verso di sé è una forma di coraggio." },
+              { label:"Gli dici che non doveva avere paura.", points:1, feedback:"Vorresti essere più forte. Prova a ricordare che avere paura non significa essere deboli." },
+              { label:"Distogli lo sguardo perché non vuoi rivedere quei momenti.", points:0, feedback:"Hai cercato di proteggerti da ricordi difficili. Puoi tornarci con calma, magari accanto a qualcuno che ti fa sentire al sicuro." }
+            ] },
+          { q:"Trovi una borraccia con poca acqua. Poco più avanti vedi un animale assetato. Che cosa fai?",
+            answers:[
+              { label:"Bevi un poco e ne lasci un poco all'animale, poi cercchi un'oasi con il gruppo.", points:2, feedback:"Hai cercato un equilibrio tra prenderti cura di te e prenderti cura dell'altro. La generosità non chiede di sparire." },
+              { label:"Dai tutta l'acqua all'animale e continui senza bere.", points:1, feedback:"Hai mostrato grande altruismo. Ricorda però che anche tu meriti cura per poter proseguire." },
+              { label:"Tieni tutta l'acqua perché hai paura di non trovarne altra.", points:0, feedback:"Hai ascoltato il bisogno di sicurezza. Puoi chiederti se esiste un modo per proteggerti senza ignorare completamente chi è accanto a te." }
+            ] },
+          { q:"Durante una tempesta di sabbia perdi la direzione. Il Grifone non si vede più. Che cosa fai?",
+            answers:[
+              { label:"Ti fermi vicino a un riparo, fai un respiro e cerchi un segnale sicuro.", points:2, feedback:"Hai scelto calma e protezione. Anche quando non vedi la guida, puoi trovare risorse dentro e intorno a te." },
+              { label:"Corri in una direzione qualsiasi per non sentirti fermo.", points:1, feedback:"Hai reagito alla paura con l'azione. Fermarti un istante può aiutarti a distinguere il movimento dalla direzione." },
+              { label:"Pensi che sia colpa tua e ti nascondi.", points:0, feedback:"Ti sei caricata di una colpa che non ti appartiene per forza. Perdersi può accadere: ciò che conta è come chiedi aiuto e riparti." }
+            ] }
+        ] }
+    ] },
+    { steps:[
+      { type:'narrative',
+        text:"Nella Caverna dei Riflessi, tu ed i tuoi quattro amici vedete le versioni di voi che potreste diventare, accettando pienamente la vostra diversità." },
+      { type:'narrative',
+        text:"A un passo dal cristallo, Velzakor si manifesta in tutta la sua presenza per la prima volta. Dice di aver già vinto: in ognuno di voi ha insinuato il dubbio e per questo nessuno è \"perfetto\" abbastanza per il cristallo." },
+      { type:'narrative',
+        text:"Il Grifone delle Tempeste ricompare e racconta la sua storia: anche lui, secoli prima, aveva cercato il cristallo e Velzakor glielo aveva impedito. Velzakor era talmente ossessionato dalla perfezione che si era isolato e trasformato in una creatura mostruosa. Egli stesso non era quindi riuscito a trovare il Cristallo e ancora oggi non sopporta che altri possano riuscire laddove lui ha fallito." },
+      { type:'question',
+        intro:"Spinti dal Grifone, prendete piena coscienza della vostra unicità e affrontate Velzakor — non con la forza, ma restituendogli, attraverso la vostra nuova sicurezza, ciò che lui stesso aveva perduto.",
+        pool:[
+          { q:"Uno specchio mostra una versione di te che riceve applausi perché dice sempre ciò che gli altri vogliono sentire. Che cosa fai?",
+            answers:[
+              { label:"Ti chiedi quali parti di te vorresti comunque mantenere vere.", points:2, feedback:"Hai scelto di cercare autenticità anche quando il consenso è invitante. Essere apprezzati è bello; essere se stessi è profondo." },
+              { label:"Vorresti diventare come quella versione per piacere a tutti.", points:1, feedback:"Hai desiderato sentirti accolta. Puoi ricordarti che chi ti vuole bene davvero ha bisogno di conoscere anche la tua voce." },
+              { label:"Rompi lo specchio perché ti fa arrabbiare.", points:0, feedback:"Hai reagito a un'immagine che ti ha ferita. La rabbia può indicare un bisogno di essere vista in modo più giusto." }
+            ] },
+          { q:"Nello specchio vedi te stesso nei panni del ruolo che il gruppo si aspetta da te — quello forte, quello che ha sempre una soluzione pronta. Oggi però ti senti stanco e incerto, ben lontano da quell'immagine. Cosa fai quando il gruppo si volta verso di te aspettandosi la solita sicurezza?",
+            answers:[
+              { label:"Dici che oggi non hai risposte pronte, e che va bene così.", points:2, feedback:"Hai scelto di mostrarti come sei davvero, anche quando questo significa deludere un'aspettativa. L'autenticità, a volte, costa proprio questo." },
+              { label:"Indossi comunque la sicurezza che si aspettano da te, anche se non la senti.", points:1, feedback:"Hai indossato un ruolo che non sentivi tuo in quel momento. Va bene farlo ogni tanto — ma vale la pena chiedersi quanto spesso capita." },
+              { label:"Eviti di rispondere, sperando che qualcun altro prenda il tuo posto.", points:0, feedback:"Hai lasciato che il silenzio scegliesse al posto tuo. Va bene non avere sempre una risposta, ma sparire non è lo stesso che essere sincera su come ti senti." }
+            ] },
+          { q:"Il Cristallo mostra una scelta che hai fatto e che ha ferito qualcuno senza volerlo. Come reagisci?",
+            answers:[
+              { label:"Riconosci l'effetto della tua scelta e provi a chiedere scusa.", points:2, feedback:"Hai unito responsabilità e cura. Chiedere scusa non cancella tutto, ma può aprire un ponte." },
+              { label:"Ti giustifichi subito perché non volevi farlo.", points:1, feedback:"Le intenzioni contano, ma anche l'effetto. Puoi ascoltare l'altro prima di spiegare la tua parte." },
+              { label:"Ti senti così in colpa che pensi di non meritare di parlare con nessuno.", points:0, feedback:"Hai preso sul serio ciò che è accaduto. Ricorda però che la responsabilità può guidare a riparare, non solo a punirti." }
+            ] },
+          { q:"Il gruppo deve decidere insieme quale sentiero prendere nella caverna. Proponi tu quello che viene scelto, ma poco dopo capite che porta a un vicolo cieco, facendovi perdere tempo prezioso. Cosa fai quando il gruppo si accorge dell'errore?",
+            answers:[
+              { label:"Riconosci di aver proposto tu quel sentiero e proponi insieme un modo per recuperare il tempo perso.", points:2, feedback:"Hai riconosciuto la tua parte senza nasconderti, e hai messo energie nel trovare una soluzione insieme: qui la responsabilità diventa azione, non solo parola." },
+              { label:"Dici che la scelta era stata di tutti, non solo tua.", points:1, feedback:"Hai diluito la responsabilità in un \"tutti insieme\", anche se la proposta era partita da te. A volte condividere la scelta iniziale rende più facile guardarla con chiarezza." },
+              { label:"Ti scusi così tante volte che il gruppo finisce per consolare te, invece di cercare la soluzione.", points:0, feedback:"Ti sei scusata così a lungo che il gruppo si è ritrovato a rassicurare te, invece di risolvere il problema insieme. Anche le scuse hanno bisogno di lasciare spazio agli altri." }
+            ] },
+          { q:"L'ultimo riflesso ti mostra una porta che si apre solo quando pronunci una verità su di te. Che cosa dici?",
+            answers:[
+              { label:"Dici una qualità di cui sei fiero, anche se ti imbarazza.", points:2, feedback:"Hai riconosciuto una tua luce. Dare valore a sé non è vanità: è vedere con chiarezza." },
+              { label:"Dici solo un difetto, perché ti sembra più facile.", points:1, feedback:"Hai guardato una parte fragile di te. Ora prova ad affiancarle anche una qualità: sei sempre più di una sola difficoltà." },
+              { label:"Resti in silenzio perché non sai ancora che cosa dire.", points:0, feedback:"Hai rispettato il tuo tempo. Le verità importanti a volte arrivano piano, quando ci sentiamo abbastanza al sicuro." }
+            ] }
+        ] }
+    ] }
+  ];
+
+  const MAX_SCORE = CHAPTERS.reduce((sum,ch)=> sum + ch.steps.filter(s=>s.type==='question').length, 0) * 2; // 12
+
+  const CRYSTAL_SVG = `<svg class="crystal-icon CLASS" viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="30,4 52,26 44,74 16,74 8,26" fill="none" stroke="currentColor" stroke-width="2.5"/>
+    <line x1="30" y1="4" x2="30" y2="74" stroke="currentColor" stroke-width="1.2" opacity="0.6"/>
+    <line x1="8" y1="26" x2="52" y2="26" stroke="currentColor" stroke-width="1.2" opacity="0.6"/>
+  </svg>`;
+
+  const CRYSTAL_APPROACH_TEXT = "Velzakor torna ad avere sembianze umane. Uno dopo l'altro, tutti vi avvicinate al cristallo e vi posate la mano. Solo quando anche l'ultima mano — la tua — lo tocca, il Cristallo delle Verità si accende.";
+
+  function craftEnding(totalScore){
+    const pct = totalScore / MAX_SCORE;
+    if(pct >= 0.75){
+      return { tier:'molto',
+        text:"Il Cristallo delle Verità esplode in una luce accecante. Hai fatto tuoi i messaggi che Luna, Kael, Nyra e Finn hanno provato a mostrarti lungo il cammino: il loro viaggio, ora, si specchia nel tuo." };
+    } else if(pct >= 0.4){
+      return { tier:'poco',
+        text:"Il Cristallo si accende a intermittenza, come una luce incerta. Alcuni dei messaggi ti sono entrati dentro, altri ti sono scivolati addosso. Non è un errore: significa solo che, per te, il cammino verso l'accettazione della tua diversità non è ancora finito." };
+    } else {
+      return { tier:'spento',
+        text:"Il Cristallo resta buio tra le tue mani. Il dubbio che Velzakor semina ha pesato più dell'accettazione, questa volta. Ma ogni fine di un viaggio è anche l'inizio del prossimo — puoi tornare a percorrerlo quando vuoi, con occhi diversi." };
+    }
+  }
+
+  const storyTextEl = document.getElementById('storyText');
+  const choicesWrap = document.getElementById('choicesWrap');
+  const storyCardEl = document.getElementById('storyCard');
+  const mapHintEl = document.getElementById('mapHint');
+  const mapPoints = MAPPOINTS.map((_, i) => document.getElementById('mp-'+i));
+
+  function shuffle(arr){
+    for(let i = arr.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  let chapterIndex, stepInChapter, score, lastPoolIdx, mode, mapTarget;
+
+  function renderMap(){
+    mapPoints.forEach((btn, i) => {
+      btn.classList.remove('done','current','locked','target');
+      btn.onclick = null;
+      btn.disabled = true;
+      if(mode === 'map'){
+        if(i < mapTarget){ btn.classList.add('done'); }
+        else if(i === mapTarget){
+          btn.classList.add('target');
+          btn.disabled = false;
+          btn.onclick = () => enterChapter(i);
+        } else { btn.classList.add('locked'); }
+      } else { // playing
+        if(i < chapterIndex){ btn.classList.add('done'); }
+        else if(i === chapterIndex){ btn.classList.add('current'); }
+        else { btn.classList.add('locked'); }
+      }
+    });
+  }
+
+  function setStory(html, choices, restartBtn){
+    storyTextEl.classList.remove('fade-in');
+    void storyTextEl.offsetWidth;
+    storyTextEl.classList.add('fade-in');
+    storyTextEl.innerHTML = html;
+    choicesWrap.innerHTML = '';
+    if(restartBtn){
+      const btn = document.createElement('button');
+      btn.className = 'restart-btn';
+      btn.textContent = 'Ricomincia il viaggio da Elvoria';
+      btn.onclick = startGame;
+      choicesWrap.appendChild(btn);
+    } else {
+      choices.forEach(c => {
+        const btn = document.createElement('button');
+        btn.className = 'choice-btn';
+        btn.textContent = c.label;
+        btn.onclick = c.onClick;
+        choicesWrap.appendChild(btn);
+      });
+    }
+  }
+
+  function showMapScreen(targetIdx, flavorText){
+    mode = 'map';
+    mapTarget = targetIdx;
+    renderMap();
+    storyCardEl.style.display = 'block';
+    const hint = targetIdx === CRYSTAL_IDX
+      ? 'Tocca <strong>il Cristallo</strong> sulla mappa per scoprire la tua verità.'
+      : `Tocca <strong>${MAPPOINTS[targetIdx]}</strong> sulla mappa per proseguire.`;
+    mapHintEl.innerHTML = (flavorText ? `<em>${flavorText}</em><br>` : '') + hint;
+    storyTextEl.innerHTML = '';
+    choicesWrap.innerHTML = '';
+  }
+
+  function enterChapter(idx){
+    mode = 'playing';
+    mapHintEl.innerHTML = '';
+    if(idx === CRYSTAL_IDX){ showCrystal(); return; }
+    chapterIndex = idx;
+    stepInChapter = 0;
+    renderMap();
+    renderStep();
+  }
+
+  function renderStep(){
+    const chapter = CHAPTERS[chapterIndex];
+    const step = chapter.steps[stepInChapter];
+    const key = chapterIndex + '-' + stepInChapter;
+
+    if(step.type === 'narrative'){
+      setStory(`<p>${step.text}</p>`, [
+        { label:'Continua', onClick: () => advanceStep() }
+      ], false);
+    } else {
+      let qIdx;
+      if(step.pool.length <= 1){ qIdx = 0; }
+      else { do { qIdx = Math.floor(Math.random()*step.pool.length); } while(qIdx === lastPoolIdx[key]); }
+      lastPoolIdx[key] = qIdx;
+      const question = step.pool[qIdx];
+      const html = (step.intro ? `<p>${step.intro}</p>` : '') + `<p>${question.q}</p>`;
+      const shuffledAnswers = shuffle(question.answers.slice());
+      const choices = shuffledAnswers.map(a => ({
+        label: a.label,
+        onClick: () => {
+          score += a.points;
+          if(a.feedback){ showFeedback(a.feedback); } else { advanceStep(); }
+        }
+      }));
+      setStory(html, choices, false);
+    }
+  }
+
+  function showFeedback(feedbackText){
+    setStory(`<p><em>${feedbackText}</em></p>`, [
+      { label:'Continua', onClick: () => advanceStep() }
+    ], false);
+  }
+
+  function advanceStep(){
+    stepInChapter++;
+    if(stepInChapter < CHAPTERS[chapterIndex].steps.length){
+      renderStep();
+    } else {
+      const nextIdx = chapterIndex + 1;
+      const flavor = (nextIdx === CRYSTAL_IDX) ? CRYSTAL_APPROACH_TEXT : null;
+      showMapScreen(nextIdx, flavor);
+    }
+  }
+
+  function showCrystal(){
+    chapterIndex = CRYSTAL_IDX;
+    renderMap();
+    storyCardEl.style.display = 'block';
+    const ending = craftEnding(score);
+    const svg = CRYSTAL_SVG.replace('CLASS', 'glow-'+ending.tier);
+    setStory(svg + `<p>${ending.text}</p>`, [], true);
+  }
+
+  function startGame(){
+    score = 0;
+    lastPoolIdx = {};
+    chapterIndex = -1;
+    showMapScreen(0, "Il tuo viaggio sta per iniziare.");
+  }
+
+  startGame();
+
+  // ---------- Modalità calibrazione mappa ----------
+  // Apri la pagina aggiungendo ?calib=1 in fondo all'indirizzo (es. index.html?calib=1):
+  // ogni clic sulla tua immagine mostrerà le coordinate percentuali esatte da copiare
+  // nello style="left:...; top:...;" del marcatore giusto (i pulsanti <button id="mp-0">...</button>
+  // qualche riga sopra nell'HTML).
+  if(new URLSearchParams(window.location.search).get('calib') === '1'){
+    const wrap = document.getElementById('mapImageWrap');
+    const badge = document.createElement('div');
+    badge.style.cssText = 'position:fixed; bottom:16px; left:16px; right:16px; max-width:420px; margin:0 auto; background:#1a1420; color:#EDE0C8; font-family:monospace; font-size:13px; padding:10px 14px; border-radius:6px; z-index:9999; box-shadow:0 4px 16px rgba(0,0,0,0.4);';
+    badge.textContent = 'Modalità calibrazione attiva — tocca la mappa per leggere le coordinate';
+    document.body.appendChild(badge);
+    wrap.addEventListener('click', (e) => {
+      if(e.target.closest('.map-marker')) return;
+      const rect = wrap.getBoundingClientRect();
+      const xPct = (((e.clientX - rect.left) / rect.width) * 100).toFixed(1);
+      const yPct = (((e.clientY - rect.top) / rect.height) * 100).toFixed(1);
+      badge.textContent = `left:${xPct}%; top:${yPct}%;`;
+    });
+  }
+
+</script>
+
+</body>
+</html>
