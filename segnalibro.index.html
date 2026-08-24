@@ -1,1 +1,520 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alla ricerca del Cristallo delle Verità — Contenuti Extra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baskervville&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@500&family=Pony+Club&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment:#EDE0C8;
+    --parchment-dark:#D9C8A0;
+    --ink:#3B2A1A;
+    --emerald:#1F4D3A;
+    --gold:#A67C27;
+    --crimson:#7A1F2B;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:'EB Garamond', serif;
+    font-size:19px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Baskervville', serif;
+    letter-spacing:0.02em;
+    margin:0;
+  }
+  .label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--crimson);
+  }
+  a{color:inherit;}
+  :focus-visible{outline:3px solid var(--gold); outline-offset:3px;}
 
+  /* ---------- Menu di navigazione ---------- */
+  .site-nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(237,224,200,0.96);
+    backdrop-filter:blur(4px);
+    border-bottom:2px solid var(--gold);
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+  }
+  .site-nav ul{
+    list-style:none; margin:0; padding:0.7rem 1rem;
+    display:flex; flex-wrap:wrap; justify-content:center; gap:0.4rem 1.4rem;
+    max-width:1100px; margin-inline:auto;
+  }
+  .site-nav a{
+    font-family:'IBM Plex Mono', monospace; font-size:0.74rem; letter-spacing:0.06em;
+    text-transform:uppercase; text-decoration:none; color:var(--ink);
+    padding:0.3rem 0.2rem; border-bottom:2px solid transparent; transition:border-color 0.2s ease, color 0.2s ease;
+    white-space:nowrap;
+  }
+  .site-nav a:hover, .site-nav a:focus-visible{ color:var(--crimson); border-color:var(--gold); }
+  @media (max-width:700px){
+    .site-nav ul{ justify-content:flex-start; overflow-x:auto; gap:0.3rem 1rem; padding:0.6rem 1rem; }
+  }
+
+  /* ---------- Texture di fondo (carta) ---------- */
+  .paper-texture{
+    position:fixed; inset:0; pointer-events:none; z-index:0; opacity:0.5;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(59,42,26,0.05) 0, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(59,42,26,0.05) 0, transparent 45%),
+      radial-gradient(circle at 50% 50%, rgba(31,77,58,0.04) 0, transparent 60%);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:3.5rem 1.5rem;
+    background:
+      linear-gradient(180deg, var(--parchment) 0%, var(--parchment-dark) 100%);
+    overflow:hidden;
+  }
+
+  .hero-content{position:relative; z-index:2; max-width:640px;}
+  .hero .label{margin-bottom:1rem; display:block;}
+  .hero h1{
+    font-family:'Pony Club', cursive;
+    font-size:clamp(2.6rem, 7vw, 4.4rem);
+    color:var(--emerald);
+    text-shadow:2px 2px 0 rgba(217,200,160,0.6);
+  }
+  .hero p.tagline{
+    font-style:italic;
+    font-size:1.25rem;
+    margin-top:1.1rem;
+    color:var(--ink);
+  }
+  .hero .divider{
+    width:120px; height:2px; margin:1.8rem auto;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .scroll-cue{
+    margin-top:2.2rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.12em;
+    color:var(--emerald);
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(8px);} }
+
+  /* ---------- torn edge divider ---------- */
+  .torn{
+    height:36px;
+    background:var(--parchment);
+    clip-path:polygon(0% 100%,3% 40%,7% 90%,12% 30%,18% 85%,24% 20%,30% 95%,36% 35%,42% 80%,48% 15%,54% 90%,60% 25%,66% 85%,72% 30%,78% 95%,84% 20%,90% 80%,96% 35%,100% 90%,100% 100%);
+  }
+
+  section{position:relative; z-index:1; padding:5rem 1.5rem;}
+  .section-inner{max-width:920px; margin:0 auto;}
+  .section-head{text-align:center; margin-bottom:3rem;}
+  .section-head h2{font-size:clamp(1.8rem,4vw,2.6rem); color:var(--emerald); margin-top:0.5rem;}
+
+  /* ---------- Sfondi distinti per sezione ---------- */
+  #il-libro{background:var(--parchment);}
+  #protagonisti{background:var(--parchment-dark);}
+  #aetherion{background:color-mix(in srgb, var(--parchment) 88%, var(--gold) 12%);}
+  #scuole-famiglie{background:color-mix(in srgb, var(--parchment) 88%, var(--emerald) 12%);}
+  #acquista{background:color-mix(in srgb, var(--parchment) 88%, var(--crimson) 12%);}
+
+  /* ---------- Pulsanti di fine sezione ---------- */
+  .section-nav{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:1rem;
+    margin-top:3.5rem; padding-top:1.6rem;
+    border-top:1px dashed rgba(166,124,39,0.5);
+  }
+  .section-nav a{
+    display:inline-flex; align-items:center; gap:0.5rem;
+    font-family:'IBM Plex Mono', monospace; font-size:0.76rem; letter-spacing:0.04em;
+    text-decoration:none; color:var(--ink);
+    border:1.5px solid var(--gold); border-radius:30px;
+    padding:0.65rem 1.3rem;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .section-nav a:hover, .section-nav a:focus-visible{background:var(--gold); color:var(--parchment);}
+
+  /* ---------- Galleria ---------- */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
+    gap:1.8rem;
+  }
+  figure{margin:0; text-align:center;}
+  .plate{
+    aspect-ratio:4/5;
+    border:2px dashed var(--gold);
+    border-radius:2px;
+    background:rgba(217,200,160,0.35);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:0.6rem;
+    color:var(--crimson);
+    transition:transform 0.35s ease, background 0.35s ease;
+  }
+  .plate:hover{ transform:translateY(-4px); background:rgba(217,200,160,0.55); }
+  .plate svg{width:40%; height:40%; opacity:0.8;}
+  .plate span{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.05em; padding:0 1rem;}
+  .plate.filled{border-style:solid; background:none; padding:0; overflow:hidden;}
+  .plate.filled img{width:100%; height:100%; object-fit:cover; display:block;}
+  figcaption{margin-top:0.8rem; font-style:italic; color:var(--ink);}
+
+  /* ---------- Protagonisti ---------- */
+  .cast-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:1.6rem;
+  }
+  .cast-card{
+    background:rgba(217,200,160,0.3);
+    border:1px solid rgba(166,124,39,0.5);
+    border-radius:4px;
+    padding:1.6rem 1.3rem;
+    text-align:center;
+  }
+  .cast-portrait{
+    width:100%; aspect-ratio:3/4; margin:0 auto 1rem;
+    border-radius:4px;
+    overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--crimson);
+    background:rgba(217,200,160,0.4);
+  }
+  .cast-portrait svg{width:55%; height:55%;}
+  .cast-portrait img{width:100%; height:100%; object-fit:contain; display:block;}
+  .cast-card h3{font-size:1.15rem; color:var(--emerald); margin-bottom:0.3rem;}
+  .cast-role{
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--crimson); display:block; margin-bottom:0.7rem;
+  }
+  .cast-card p.desc{font-size:0.98rem; margin:0;}
+
+  /* ---------- Per scuole e famiglie ---------- */
+  .info-box{
+    background:rgba(217,200,160,0.35);
+    border:1.5px solid var(--gold);
+    border-radius:6px;
+    padding:2rem 2.2rem;
+    max-width:760px; margin:0 auto;
+  }
+  .info-box ul{margin:1rem 0; padding-left:1.3rem;}
+  .info-box li{margin-bottom:0.5rem;}
+  .info-box > h3{margin:0 0 0.8rem;}
+  .info-sub{
+    margin-top:1.6rem; padding-top:1.4rem;
+    border-top:1px dashed rgba(166,124,39,0.6);
+  }
+  .info-sub h3{margin:0 0 0.8rem;}
+  .info-sub p{margin:0 0 0.9rem;}
+  .info-sub ul, .info-sub ol{margin:0.8rem 0 0; padding-left:1.3rem;}
+  .info-sub li{margin-bottom:0.4rem;}
+  .cta-line{
+    margin-top:1.6rem; padding-top:1.2rem;
+    border-top:1px dashed rgba(166,124,39,0.6);
+    font-style:italic;
+  }
+
+  /* ---------- Acquista ---------- */
+  .buy-wrap{
+    display:flex; flex-wrap:wrap; gap:2.4rem; align-items:flex-start; justify-content:center;
+    max-width:820px; margin:0 auto;
+  }
+  .buy-cover{
+    width:260px; aspect-ratio:2/3; flex-shrink:0;
+    border-radius:3px;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    color:var(--crimson); font-family:'IBM Plex Mono', monospace; font-size:0.72rem; padding:1rem;
+    background:rgba(217,200,160,0.35);
+  }
+  .buy-details{flex:1 1 320px; min-width:260px;}
+  .buy-price{font-family:'Baskervville', serif; font-size:1.4rem; color:var(--emerald); margin:0.6rem 0 1.2rem;}
+  .buy-btn{
+    display:inline-block; width:100%; text-align:center; box-sizing:border-box;
+    background:var(--emerald); color:var(--parchment); text-decoration:none;
+    font-family:'IBM Plex Mono', monospace; font-size:0.82rem; letter-spacing:0.04em;
+    padding:0.8rem 1.2rem; border-radius:3px; margin-bottom:0.7rem; transition:background 0.2s ease;
+  }
+  .buy-btn:hover{background:var(--crimson);}
+  .buy-isbn{font-family:'IBM Plex Mono', monospace; font-size:0.78rem; opacity:0.75; margin:0 0 1.2rem;}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{max-width:760px; margin:0 auto;}
+  .faq-item{
+    border-bottom:1px solid rgba(166,124,39,0.4);
+    padding:1.1rem 0;
+  }
+  .faq-item summary{
+    cursor:pointer; font-family:'Baskervville', serif; font-size:1.05rem; color:var(--emerald);
+    list-style:none; display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:'+'; font-size:1.3rem; color:var(--gold); flex-shrink:0;}
+  .faq-item[open] summary::after{content:'\2212';}
+  .faq-item p{margin:0.8rem 0 0;}
+  footer{
+    text-align:center;
+    padding:3.5rem 1.5rem 4rem;
+    color:var(--ink);
+  }
+  footer .label{margin-bottom:0.6rem;}
+  footer .label .book-title{
+    font-family:'Baskervville', serif;
+    font-style:italic;
+    font-weight:700;
+    text-transform:none;
+    letter-spacing:normal;
+    color:var(--emerald);
+    font-size:1.15rem;
+  }
+  footer small{display:block; margin-top:1.6rem; opacity:0.65; font-size:0.78rem;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .scroll-cue{animation:none !important;}
+    .plate{transition:none !important; animation:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" id="menu" aria-label="Sezioni della pagina">
+  <ul>
+    <li><a href="#il-libro">Il libro</a></li>
+    <li><a href="#protagonisti">I protagonisti</a></li>
+    <li><a href="#aetherion">Aetherion</a></li>
+    <li><a href="#scuole-famiglie">Per scuole e famiglie</a></li>
+    <li><a href="#acquista">Acquista</a></li>
+  </ul>
+</nav>
+
+<div class="paper-texture"></div>
+
+<!-- ============ IL LIBRO ============ -->
+<section id="il-libro">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>Il libro</h2>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap:2.5rem; align-items:flex-start; justify-content:flex-start;">
+      <div class="buy-cover" style="width:220px; padding:0; overflow:hidden;">
+        <img src="Copertina.png" alt="Copertina del libro" style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>
+      <div style="flex:1 1 380px; min-width:280px;">
+        <p>Nel regno magico di Aetherion, un antico cristallo custodisce verità che pochi hanno il coraggio di affrontare. Quattro ragazzi partiranno alla sua ricerca, ognuno di loro portando con sé un dono straordinario; ma anche dubbi, fragilità e insicurezze che spesso sembraranno più forti di qualsiasi potere. Attraversando terre misteriose, paure nascoste e scelte in grado di cambiare ogni cosa, impareranno lungo il cammino a fidarsi gli uni degli altri, a guardarsi con occhi nuovi e a capire che ciò che li rende imperfetti può diventare la loro forza più grande. Tra magia, amicizia e crescita, per trovare il cristallo la sfida più difficile sarà avere la capacità di guardarsi dentro.</p>
+      </div>
+    </div>
+    <div class="section-nav">
+      <a href="#protagonisti">Clicca per andare alla sezione successiva o torna al menù principale</a>
+    </div>
+  </div>
+</section>
+
+<div id="wrap-protagonisti">
+<div class="torn"></div>
+
+<!-- ============ I PROTAGONISTI ============ -->
+<section id="protagonisti">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="label">Chi incontrerai lungo il cammino</span>
+      <h2>I protagonisti</h2>
+    </div>
+    <div class="cast-grid">
+      <div class="cast-card">
+        <div class="cast-portrait"><img src="Luna.png" alt="Luna"></div>
+        <h3>Luna</h3>
+        <span class="cast-role">Vede il futuro, ma a frammenti</span>
+        <p class="desc">Le sue visioni arrivano senza preavviso e spesso la travolgono. Fatica a capirne il significato.</p>
+      </div>
+      <div class="cast-card">
+        <div class="cast-portrait"><img src="Kael_2.png" alt="Kael"></div>
+        <h3>Kael</h3>
+        <span class="cast-role">Ha ali enormi, ma nascoste</span>
+        <p class="desc">Le sue ali lo imbarazzano. Non si sente all'altezza dei suoi antenati perché non sa volare.</p>
+      </div>
+      <div class="cast-card">
+        <div class="cast-portrait"><img src="Nyra.png" alt="Nyra"></div>
+        <h3>Nyra</h3>
+        <span class="cast-role">Parla con la natura, ma non con gli uomini</span>
+        <p class="desc">Ha donato la sua voce alla foresta per salvarla. Quando prova a comunicare con le persone, la voce le si spezza in gola.</p>
+      </div>
+      <div class="cast-card">
+        <div class="cast-portrait"><img src="Finn_2.png" alt="Finn"></div>
+        <h3>Finn</h3>
+        <span class="cast-role">Guida il vento, ma non completamente</span>
+        <p class="desc">Spavaldo in apparenza, spaventato in realtà: il vento sfugge spesso al suo controllo.</p>
+      </div>
+    </div>
+    <div class="section-nav">
+      <a href="#aetherion">Clicca per andare alla sezione successiva o torna al menù principale</a>
+    </div>
+  </div>
+</section>
+</div>
+
+<div id="wrap-aetherion">
+<div class="torn"></div>
+
+<!-- ============ IL MONDO MAGICO DI AETHERION ============ -->
+<section id="aetherion">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="label">Il mondo della storia</span>
+      <h2>Aetherion</h2>
+    </div>
+    <p style="text-align:center; max-width:640px; margin:0 auto 2.5rem;">Aetherion è un regno sospeso tra magia e mistero che si estende ai confini del mondo. Foreste dalle foglie iridescenti, fiumi limpidi come specchi, montagne innevate, pianure infinite e deserti dorati compongono un paesaggio in continuo mutamento. In un angolo remoto di Aetherion sorge Elvoria, un villaggio i cui abitanti sono dotati di doni speciali.</p>
+    <div class="gallery">
+      <figure>
+        <div class="plate filled">
+          <img src="Elvoria.png" alt="Elvoria">
+        </div>
+        <figcaption>Il villaggio di Elvoria</figcaption>
+      </figure>
+      <figure>
+        <div class="plate filled">
+          <img src="Foresta.png" alt="La Foresta Sussurrante">
+        </div>
+        <figcaption>La Foresta Sussurrante</figcaption>
+      </figure>
+      <figure>
+        <div class="plate filled">
+          <img src="Monte.png" alt="Il Monte Azzurro">
+        </div>
+        <figcaption>Il Monte Azzurro</figcaption>
+      </figure>
+      <figure>
+        <div class="plate filled">
+          <img src="Pianura.png" alt="La Pianura dei Ventagli">
+        </div>
+        <figcaption>La Pianura dei Ventagli</figcaption>
+      </figure>
+      <figure>
+        <div class="plate filled">
+          <img src="Deserto.png" alt="Il Deserto dei Sogni">
+        </div>
+        <figcaption>Il Deserto dei Sogni</figcaption>
+      </figure>
+      <figure>
+        <div class="plate filled">
+          <img src="Caverna.jpg" alt="La Caverna dei Cristalli">
+        </div>
+        <figcaption>La Caverna dei Cristalli</figcaption>
+      </figure>
+    </div>
+    <div class="section-nav">
+      <a href="#scuole-famiglie">Clicca per andare alla sezione successiva o torna al menù principale</a>
+    </div>
+  </div>
+</section>
+</div>
+
+<div id="wrap-scuole-famiglie">
+<div class="torn"></div>
+
+<!-- ============ PER SCUOLE E FAMIGLIE ============ -->
+<section id="scuole-famiglie">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="label">Per crescere insieme</span>
+      <h2>Per scuole e famiglie</h2>
+    </div>
+    <div class="info-box">
+      <h3>I temi trattati dal libro</h3>
+      <p>Il libro affronta, attraverso un'avventura fantasy, temi che rientrano nell'educazione socio-emotiva (SEL):</p>
+      <ul>
+        <li>Accettazione di sé e della propria diversità, senza la necessità di uniformarsi agli altri</li>
+        <li>Alfabetizzazione emotiva: riconoscere un'emozione prima di reagire d'istinto</li>
+        <li>Autostima e resilienza di fronte alla fatica e al dubbio</li>
+        <li>Responsabilità delle proprie scelte e valore della riparazione, non della punizione</li>
+        <li>Gentilezza verso se stessi (self-compassion), come alternativa all'autocritica</li>
+        <li>Il rifiuto della perfezione e del confronto con gli altri come unica misura del proprio valore</li>
+      </ul>
+      <div class="info-sub">
+        <h3>Un'esperienza, non solo una lettura</h3>
+        <p>Il libro è accompagnato da un percorso interattivo gratuito, raggiungibile scansionando un QR code stampato alla fine del libro. Il lettore non osserva più i personaggi dall'esterno: affronta in prima persona le stesse prove del romanzo, attraverso scelte che non hanno mai una risposta «giusta» o «sbagliata» — solo una riflessione, pensata per far emergere quanto il messaggio di quella tappa sia stato compreso e fatto proprio.</p>
+        <p>Con 25 scenari diversi (5 per ogni ambientazione) distribuiti lungo un percorso fisso, ogni lettura del libro può essere seguita da un'esperienza leggermente diversa: un dettaglio pensato apposta per non esaurirsi al primo utilizzo.</p>
+        <p>Aspetti pratici pensati per un uso con i ragazzi:</p>
+        <ul>
+          <li>Accessibile da qualsiasi smartphone o computer, tramite browser</li>
+          <li>Nessuna app da scaricare, nessun account da creare</li>
+          <li>Nessun dato personale richiesto o raccolto — utilizzabile serenamente anche con minori</li>
+        </ul>
+      </div>
+      <div class="info-sub">
+        <h3>Come utilizzarlo in classe</h3>
+        <ol>
+          <li>Lettura individuale del capitolo a casa, seguita dal percorso interattivo prima della discussione in classe</li>
+          <li>Discussione guidata sulle scelte fatte e sui feedback ricevuti: l'assenza di risposte giuste rende ogni scelta un punto di partenza per il confronto, non una verifica</li>
+          <li>Scrittura creativa: «cosa avrebbe scelto il personaggio con cui ti sei identificato di più, in questa stessa situazione?»</li>
+          <li>Percorso strutturato di educazione socio-emotiva su più incontri, dedicando un incontro a ogni ambientazione del libro</li>
+          <li>Attività di gruppo: confrontare in classe gli epiloghi diversi ottenuti dai compagni, e discutere perché il Cristallo si è illuminato in modo diverso per ciascuno</li>
+        </ol>
+      </div>
+      <div class="info-sub">
+        <h3>A chi si rivolge</h3>
+        <p>Il romanzo e il percorso interattivo si adattano a lettori di scuola primaria e secondaria di primo grado (8-14), e possono essere proposti sia come lettura individuale sia come progetto di classe.</p>
+        <p> Per maggiori informazioni e presentazioni, contattare l'autrice: monica.lazzari@gmail.com </p>
+      </div>
+    </div>
+    <div class="section-nav">
+      <a href="#acquista">Clicca per andare alla sezione successiva o torna al menù principale</a>
+    </div>
+  </div>
+</section>
+</div>
+
+<div id="wrap-acquista">
+<div class="torn"></div>
+
+<!-- ============ ACQUISTA ============ -->
+<section id="acquista">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="label">Porta a casa il libro</span>
+      <h2>Acquista</h2>
+    </div>
+    <div class="buy-wrap">
+      <div class="buy-cover" style="padding:0; overflow:hidden;">
+        <img src="Copertina.png" alt="Copertina del libro" style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>
+      <div class="buy-details">
+        <p class="buy-price">Prezzo: €16,00</p>
+        <p class="buy-isbn">ISBN: 979-12-5761-091-3 — Formato: [da inserire]</p>
+        <a class="buy-btn" href="#">Acquista su Amazon [link]</a>
+        <a class="buy-btn" href="#">Acquista su Mondadori [link]</a>
+        <a class="buy-btn" href="#">Acquista su Feltrinelli [link]</a>
+        <a class="buy-btn" href="#">Acquista su Giacovelli Editore [link]</a>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="torn"></div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <span class="label">Grazie per aver esplorato i contenuti del libro <span class="book-title">Alla ricerca del Cristallo delle Verità</span></span>
+  <p>© Monica Lazzari</p>
+  <small>Le illustrazioni di questa pagina sono state create digitalmente con il supporto di strumenti di intelligenza artificiale.</small>
+</footer>
+
+</body>
+</html>
