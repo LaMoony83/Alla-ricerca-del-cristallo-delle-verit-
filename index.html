@@ -16,7 +16,7 @@
     --crimson:#7A1F2B;
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; scroll-padding-top:4.5rem;}
   body{
     margin:0;
     background:var(--parchment);
@@ -40,6 +40,30 @@
   }
   a{color:inherit;}
   :focus-visible{outline:3px solid var(--gold); outline-offset:3px;}
+
+  /* ---------- Menu di navigazione ---------- */
+  .site-nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(237,224,200,0.96);
+    backdrop-filter:blur(4px);
+    border-bottom:2px solid var(--gold);
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+  }
+  .site-nav ul{
+    list-style:none; margin:0; padding:0.7rem 1rem;
+    display:flex; flex-wrap:wrap; justify-content:center; gap:0.4rem 1.4rem;
+    max-width:1100px; margin-inline:auto;
+  }
+  .site-nav a{
+    font-family:'IBM Plex Mono', monospace; font-size:0.74rem; letter-spacing:0.06em;
+    text-transform:uppercase; text-decoration:none; color:var(--ink);
+    padding:0.3rem 0.2rem; border-bottom:2px solid transparent; transition:border-color 0.2s ease, color 0.2s ease;
+    white-space:nowrap;
+  }
+  .site-nav a:hover, .site-nav a:focus-visible{ color:var(--crimson); border-color:var(--gold); }
+  @media (max-width:700px){
+    .site-nav ul{ justify-content:flex-start; overflow-x:auto; gap:0.3rem 1rem; padding:0.6rem 1rem; }
+  }
 
   /* ---------- Texture di fondo (carta) ---------- */
   .paper-texture{
@@ -85,6 +109,7 @@
   }
   .scroll-cue{
     margin-top:2.2rem;
+    text-align:center;
     font-family:'IBM Plex Mono', monospace;
     font-size:0.78rem;
     letter-spacing:0.12em;
@@ -104,6 +129,11 @@
   .section-inner{max-width:920px; margin:0 auto;}
   .section-head{text-align:center; margin-bottom:3rem;}
   .section-head h2{font-size:clamp(1.8rem,4vw,2.6rem); color:var(--emerald); margin-top:0.5rem;}
+
+  /* ---------- Sfondi distinti per sezione ---------- */
+  #galleria{background:var(--parchment-dark);}
+  #luoghi{background:var(--parchment);}
+  #faq{background:var(--parchment-dark);}
 
   /* ---------- Galleria ---------- */
   .gallery{
@@ -133,6 +163,7 @@
   /* ---------- Adventure game ---------- */
   .adventure{background:var(--emerald); color:var(--parchment);}
   .adventure .label{color:var(--gold);}
+  .adventure .scroll-cue{color:var(--gold);}
   .adventure .section-head h2{color:var(--parchment);}
   .trail-wrap{max-width:720px; margin:0 auto;}
 
@@ -234,6 +265,21 @@
   .crystal-icon.glow-poco{filter:drop-shadow(0 0 8px var(--gold)) brightness(0.95); opacity:0.75;}
   .crystal-icon.glow-spento{filter:none; opacity:0.35;}
 
+  /* ---------- FAQ ---------- */
+  .faq-list{max-width:760px; margin:0 auto;}
+  .faq-item{
+    border-bottom:1px solid rgba(166,124,39,0.4);
+    padding:1.1rem 0;
+  }
+  .faq-item summary{
+    cursor:pointer; font-family:'Baskervville', serif; font-size:1.05rem; color:var(--emerald);
+    list-style:none; display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:'+'; font-size:1.3rem; color:var(--gold); flex-shrink:0;}
+  .faq-item[open] summary::after{content:'\2212';}
+  .faq-item p{margin:0.8rem 0 0;}
+
   /* ---------- Footer ---------- */
   footer{
     text-align:center;
@@ -241,12 +287,6 @@
     color:var(--ink);
   }
   footer .label{margin-bottom:0.6rem;}
-  footer .social{margin-top:1.2rem; display:flex; gap:1.2rem; justify-content:center;}
-  footer .social a{
-    width:38px; height:38px; border-radius:50%;
-    border:1.5px solid var(--emerald);
-    display:flex; align-items:center; justify-content:center;
-  }
   footer small{display:block; margin-top:1.6rem; opacity:0.65; font-size:0.78rem;}
 
   @media (prefers-reduced-motion: reduce){
@@ -259,20 +299,30 @@
 </head>
 <body>
 
+<nav class="site-nav" id="menu" aria-label="Sezioni della pagina">
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#avventura">Il gioco</a></li>
+    <li><a href="#galleria">I protagonisti</a></li>
+    <li><a href="#luoghi">Aetherion</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+</nav>
+
 <div class="paper-texture"></div>
 
 <!-- ============ HERO ============ -->
-<section class="hero">
+<section class="hero" id="home">
   <div class="hero-content">
     <span class="label">Contenuti speciali del libro</span>
     <h1>Alla ricerca del Cristallo delle Verità</h1>
     <p class="tagline">Il viaggio continua oltre l'ultima pagina.</p>
     <div class="divider"></div>
-    <p>Complimenti! Sei arrivato alla fine della storia ed hai scansionato il QR Code per esplorarne i contenuti speciali. 
+    <p>Complimenti! Sei arrivato alla fine della storia e la tua curiosità ti ha portato ad esplorare i contenuti speciali del libro. 
       Qui potrai percorrere il tuo cammino verso il Cristallo delle Verità da protagonsita, in un susseguirsi di bivi che non sono mai stati raccontati. 
-      Inoltre avrai accesso alle tavole illustrate dei personaggi e delle ambientazioni del libro.</p>
+      Inoltre avrai accesso alle tavole illustrate dei personaggi e delle ambientazioni della storia.</p>
   </div>
-  <div class="scroll-cue">Scorri per iniziare ↓</div>
+  <div class="scroll-cue">Scorri per iniziare ↓ o clicca sul menù principale</div>
 </section>
 <div class="torn"></div>
 
@@ -309,6 +359,7 @@
         <div class="choices" id="choicesWrap"></div>
       </div>
     </div>
+    <div class="scroll-cue">Scorri per continuare ↓ o clicca sul menù principale</div>
   </div>
 </section>
 <div class="torn"></div>
@@ -336,14 +387,14 @@
       </figure>
       <figure>
         <div class="plate filled">
-          <img src="Kael.png" alt="Kael">
+          <img src="Kael_2.png" alt="Kael">
         </div>
         <figcaption>Kael</figcaption>
-        <p class="plate-desc">Ha grandi ali di cui si vergogna perché pesanti ed ingombranti. Si sente diverso dai suoi antenati poiché le sue ali lo rendono incapace di compiere gesta eroiche. Il suo desiderio più grande è di usare le ali per volare.</p>
+        <p class="plate-desc">Ha grandi ali di cui si vergogna perché pesanti ed ingombranti. Si sente diverso dai suoi antenati poiché incapace di compiere gesta eroiche. Il suo desiderio più grande è di usare le sue ali per volare.</p>
       </figure>
       <figure>
         <div class="plate filled">
-          <img src="Finn.png" alt="Finn">
+          <img src="Finn_2.png" alt="Finn">
         </div>
         <figcaption>Finn</figcaption>
         <p class="plate-desc">Gioca con il vento, ma quest'ultimo gli sfugge spesso di mano. Vorrebbe controllarlo e dominarlo, ma per via dei disastri che ha combinato in passato è stato relegato sul Monte Azzurro.</p>
@@ -363,6 +414,7 @@
         <p class="plate-desc">La ricerca ossessiva della perfezione lo ha trasformato da giovane ragazzo a creatura mostruosa. Il suo obiettivo è impedire a chiunque cerchi il Cristallo delle Verità di raggiungerlo.</p>
       </figure>
     </div>
+    <div class="scroll-cue">Scorri per continuare ↓ o clicca sul menù principale</div>
   </div>
 </section>
 <div class="torn"></div>
@@ -371,7 +423,7 @@
 <section id="luoghi">
   <div class="section-inner">
     <div class="section-head">
-      <h2>Il mondo fantastico di Aetherion</h2>
+      <h2>Aetherion</h2>
     </div>
     <div class="gallery">
       <figure>
@@ -415,15 +467,42 @@
 </section>
 <div class="torn"></div>
 
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>FAQ - Domande frequenti</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Devo aver letto il libro per giocare?</summary>
+        <p>Il gioco è pensato per chi ha letto il libro, poiché i riferimenti alla trama ti aiuteranno a comprendere meglio le domande e ad ottenere risultati più soddisfacenti.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Posso rigiocare il percorso più volte?</summary>
+        <p>Sì. Ogni volta le prove che incontri lungo il cammino cambiano, quindi ogni partita è un'esperienza un po' diversa.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Il finale che ottengo resta salvato da qualche parte?</summary>
+        <p>No, nulla viene salvato. Ogni partita è indipendente: puoi ricominciare da capo quando vuoi.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Vengono raccolti i miei dati personali?</summary>
+        <p>No. Il gioco funziona interamente nel tuo browser: non serve creare un account né fornire alcuna informazione personale.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Posso usarlo su qualsiasi dispositivo?</summary>
+        <p>Sì, basta un browser e una connessione internet: funziona da smartphone, tablet o computer.</p>
+      </details>
+    </div>
+  </div>
+</section>
+<div class="torn"></div>
+
 <!-- ============ FOOTER ============ -->
 <footer>
   <span class="label">Grazie per esserti messo in gioco e per aver esplorato i contenuti speciali del libro.</span>
   <p>Creato per i lettori di <em>Alla ricerca del Cristallo delle Verità</em><br>© Monica Lazzari</p>
-  <div class="social">
-    <a href="#" aria-label="Instagram">IG</a>
-    <a href="#" aria-label="Sito web">W</a>
-  </div>
-  <small>Sostituisci questi placeholder con i tuoi link e il tuo copyright reale.</small>
   <small>Le illustrazioni di questa pagina sono state create digitalmente con il supporto di strumenti di intelligenza artificiale.</small>
 </footer>
 
@@ -455,19 +534,19 @@
       { type:'question',
         intro:"A Elvoria, Luna incontra Kael. Luna vede il futuro, ma in frammenti confusi che ogni volta la travolgono. Kael porta sulle spalle due ali enormi e ingombranti, ma non riesce a volare.",
         pool:[
-          { q:"Kael mostra a Luna le sue ali, imbarazzato: sono troppo grandi per essere utili a qualcosa. Non riesce nemmeno a volare. Tu davanti a Kael come reagiresti?",
+          { q:"Kael mostra a Luna le sue ali, imbarazzato: sono troppo grandi per essere utili a qualcosa. Non riesce nemmeno a volare. Tu davanti a Kael come reagisci?",
             answers:[ {label:"Gli racconti di ciò che ti rende unico, senza vergogna", points:2}, {label:"Lo ascolti, ma non parli di te", points:1}, {label:"Cambi discorso, imbarazzato anche tu", points:0} ] },
-          { q:"Una visione travolge Luna all'improvviso, lasciandola senza fiato.",
+          { q:"Una visione travolge Luna all'improvviso, lasciandola senza fiato. Tu che fai?",
             answers:[ {label:"Rimani al suo fianco finché non si riprende", points:2}, {label:"Aspetti in disparte, senza intrometterti", points:1}, {label:"Spaventato ed imbarazzato, ti allontani un poco", points:0} ] }
         ] }
     ] },
     { steps:[
       { type:'narrative',
-        text:"Tu e i ragazzi diventati amici. Luna e Kael vedono un bagliore nella radura fuori Elvoria. Vanno a scoprire cosa sia: è il Grifone delle Tempeste. «Sto per affidarvi una missione», dice loro. «Il viaggio che vi aspetta non premia la perfezione. Premia quanto saprete riconoscere, in voi stessi e negli altri, ciò che vi rende unici». Acettate la mission e la mattina seguente partite per la missione." }
+        text:"Tu e i ragazzi diventati amici. Ad un tratto vedete un bagliore nella radura fuori Elvoria. Andate a scoprire cosa stia succedendo: è il Grifone delle Tempeste. «Sto per affidarvi una missione», dice loro. «Il viaggio che vi aspetta non premia la perfezione. Premia quanto saprete riconoscere, in voi stessi e negli altri, ciò che vi rende unici». All'unanimità decidete di accettare e la mattina seguente partite per la missione." }
     ] },
     { steps:[
       { type:'narrative',
-        text:"Mentre vi addentrata tra gli alberi, Luna usa il suo dono: una visione frammentata la guida tra gli alberi della Foresta Sussurrante, verso qualcuno che sembra avere bisogno di aiuto." },
+        text:"Mentre vi addentrate tra gli alberi, Luna usa il suo dono: una visione frammentata la guida attraverso la Foresta Sussurrante verso qualcuno che sembra avere bisogno di aiuto. E' Nyra." },
       { type:'question',
         intro:"Mentre vi avvicinate a Nyra, la Foresta Sussurrante sembra mettere alla prova anche te.",
         pool:[
@@ -479,7 +558,7 @@
             ] },
           { q:"Un ramo incantato ti offre un mantello che può nascondere ogni dettaglio di te che non ti piace. Che cosa fai?",
             answers:[
-              { label:"Lo indossi per un momento, poi lo togli e osservi come ti sento.", points:2, feedback:"Hai scelto di esplorare senza giudicarti. Conoscersi richiede tempo e curiosità, non fretta." },
+              { label:"Lo indossi per un momento, poi lo togli e osservi come ti senti.", points:2, feedback:"Hai scelto di esplorare senza giudicarti. Conoscersi richiede tempo e curiosità, non fretta." },
               { label:"Rifiuti il mantello e prosegui mostrando il tuo aspetto.", points:1, feedback:"Hai scelto di non nasconderti. Ricorda che accettarsi non significa dover essere sempre sicuri." },
               { label:"Lo indossi e decidi di non toglierlo più.", points:0, feedback:"Forse una parte di te desidera sentirsi al sicuro. La tua luce non sparisce: aspetta solo di essere guardata con dolcezza." }
             ] },
@@ -503,7 +582,7 @@
             ] }
         ] },
       { type:'narrative',
-        text:"Con l'aiuto di Nyra — che ascolta la foresta come nessun altro potrebbe — tue gloi altri ragazzi trovate la via d'uscita e invitate Nyra a unirsi al viaggio: il suo dono è speciale. Appena fuori dagli alberi, però, avvertite per la prima volta una presenza: non si vede, non parla, ma il freddo che porta con sé ha un nome — Velzakor." }
+        text:"Nyra ascolta la foresta come nessun altro sa fare. Tu e gli altri ragazzi le dite che ha un dono speciale e la invitate ad unirsi a voi. Con l'aiuto di Nyra trovate la via d'uscita dalla Foresta Sussurrante. Appena fuori dagli alberi, però, avvertite per la prima volta una presenza: non si vede, non parla, ma il freddo che porta con sé ha un nome — Velzakor. Non vi fate scoraggiare e proseguito verso il Monte Azzurro." }
     ] },
     { steps:[
       { type:'narrative',
@@ -533,13 +612,13 @@
             answers:[
               { label:"Il sentiero lungo e sicuro, anche se richiede pazienza.", points:2, feedback:"Hai scelto un passo sostenibile. La strada più lenta non è una strada minore." },
               { label:"Il sentiero breve e scivoloso, facendo molta attenzione.", points:1, feedback:"Hai scelto una sfida intensa con attenzione. Ricorda di fermarti quando il rischio supera ciò che puoi gestire." },
-              { label:"Il sentiero tra le nuvole, perché voglio vedere dove porta.", points:0, feedback:"La curiosità ti guida verso l'ignoto. Porta con te anche una domanda: che cosa mi aiuta a sentirmi abbastanza al sicuro?" }
+              { label:"Il sentiero tra le nuvole, perché vuoi vedere dove porta.", points:0, feedback:"La curiosità ti guida verso l'ignoto. Porta con te anche una domanda: che cosa mi aiuta a sentirmi abbastanza al sicuro?" }
             ] },
           { q:"Una voce nella roccia ripete: «Non sei abbastanza forte per arrivare in cima.» Come rispondi?",
             answers:[
-              { label:"Le rispondi che puoi provare un passo alla volta.", points:2, feedback:"Hai trasformato una voce scoraggiante in un obiettivo possibile. Un passo alla volta è già movimento." },
+              { label:"Rispondi che puoi provare un passo alla volta.", points:2, feedback:"Hai trasformato una voce scoraggiante in un obiettivo possibile. Un passo alla volta è già movimento." },
               { label:"Credi alla voce e smetti di salire.", points:1, feedback:"Quella voce ha trovato un punto fragile. Puoi cercare una voce più gentile da cui ripartire." },
-              { label:"Fingi di non sentirla, ma dentro ti sento piccolo.", points:0, feedback:"Hai continuato nonostante il dubbio. Dare spazio a ciò che provi può rendere il prossimo passo meno pesante." }
+              { label:"Fingi di non sentirla, ma dentro ti senti piccolo.", points:0, feedback:"Hai continuato nonostante il dubbio. Dare spazio a ciò che provi può rendere il prossimo passo meno pesante." }
             ] }
         ] }
     ] },
@@ -551,7 +630,7 @@
         pool:[
           { q:"Il vento apre davanti a te tre ventagli: uno rosso soffia veloce, uno blu soffia piano, uno dorato resta immobile. Quale segui?",
             answers:[
-              { label:"i il ventaglio blu eti prendi un momento per capire cosa senti.", points:2, feedback:"Hai scelto di ascoltarti prima di agire. Le emozioni non sono ostacoli: possono essere segnali." },
+              { label:"Segui il ventaglio blu e ti prendi un momento per capire cosa senti.", points:2, feedback:"Hai scelto di ascoltarti prima di agire. Le emozioni non sono ostacoli: possono essere segnali." },
               { label:"Segui il ventaglio rosso senza pensarci, perché vuoi arrivare subito.", points:1, feedback:"Hai seguito l'urgenza del momento. Può essere utile chiederti: questa fretta mi aiuta o mi allontana da ciò che desidero?" },
               { label:"Scegli il ventaglio dorato e resti fermo perché non vuoi sbagliare.", points:0, feedback:"Hai cercato sicurezza nell'immobilità. Puoi concederti una piccola scelta, anche quando non hai tutte le risposte." }
             ] },
@@ -623,11 +702,11 @@
       { type:'narrative',
         text:"Nella Caverna dei Riflessi, tu ed i tuoi quattro amici vedete le versioni di voi che potreste diventare, accettando pienamente la vostra diversità." },
       { type:'narrative',
-        text:"A un passo dal cristallo, Velzakor si manifesta in tutta la sua presenza per la prima volta. Dice di aver già vinto: in ognuno di voi ha insinuato il dubbio, e per questo nessuno è \"perfetto\" abbastanza per il cristallo." },
+        text:"A un passo dal cristallo, Velzakor si manifesta in tutta la sua presenza per la prima volta. Dice di aver già vinto: in ognuno di voi ha insinuato il dubbio e per questo nessuno è \"perfetto\" abbastanza per il cristallo." },
       { type:'narrative',
-        text:"Il Grifone delle Tempeste ricompare e racconta la sua storia: anche lui, secoli prima, aveva cercato il cristallo — e Velzakor glielo aveva impedito. L'ossessione di Velzakor per la perfezione lo aveva isolato e trasformato, fino a farlo diventare qualcuno chn on sopporta che altri possano riuscire laddove lui ha fallito." },
+        text:"Il Grifone delle Tempeste ricompare e racconta la sua storia: anche lui, secoli prima, aveva cercato il cristallo e Velzakor glielo aveva impedito. Velzakor era talmente ossessionato dalla perfezione che si era isolato e trasformato in una creatura mostruosa. Egli stesso non era quindi riuscito a trovare il Cristallo e ancora oggi non sopporta che altri possano riuscire laddove lui ha fallito." },
       { type:'question',
-        intro:"Spinti dal Grifone, i prendete piena coscienza della vostra unicità e affrontate Velzakor — non con la forza, ma restituendogli, attraverso la vostra nuova sicurezza, ciò che lui stesso aveva perduto.",
+        intro:"Spinti dal Grifone, prendete piena coscienza della vostra unicità e affrontate Velzakor — non con la forza, ma restituendogli, attraverso la vostra nuova sicurezza, ciò che lui stesso aveva perduto.",
         pool:[
           { q:"Uno specchio mostra una versione di te che riceve applausi perché dice sempre ciò che gli altri vogliono sentire. Che cosa fai?",
             answers:[
